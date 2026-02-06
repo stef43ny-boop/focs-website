@@ -18,7 +18,6 @@ html{scroll-behavior:smooth;}
 *{box-sizing:border-box;margin:0;padding:0;font-family:"Inter",sans-serif;}
 body{background:var(--gray-light);line-height:1.65;}
 
-/* HEADER */
 header{
 background:var(--blue-dark);
 color:white;
@@ -31,11 +30,7 @@ top:0;
 z-index:1000;
 }
 
-nav{
-display:flex;
-gap:18px;
-}
-
+nav{display:flex;gap:18px;}
 nav a{color:white;text-decoration:none;font-size:14px;}
 
 .lang-btn{
@@ -47,7 +42,6 @@ border-radius:6px;
 
 .menu-toggle{display:none;font-size:22px;cursor:pointer;}
 
-/* MOBILE MENU */
 .mobile-menu{
 display:none;
 position:absolute;
@@ -68,7 +62,6 @@ text-decoration:none;
 
 .mobile-menu.active{display:block;}
 
-/* HERO */
 .hero{
 background:linear-gradient(rgba(11,42,74,.9),rgba(11,42,74,.9)),url('images/hero.jpg') center/cover no-repeat;
 color:white;
@@ -89,11 +82,9 @@ text-decoration:none;
 font-weight:600;
 }
 
-/* SECTIONS */
 section{padding:90px 64px;background:white;}
 .section-title{font-size:30px;margin-bottom:18px;color:var(--blue-dark);}
 
-/* GRID */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -109,7 +100,14 @@ border:1px solid #E2E6EA;
 }
 
 .clients{display:flex;flex-wrap:wrap;gap:18px;margin-top:20px;font-weight:600;}
-footer{background:var(--blue-dark);color:white;text-align:center;padding:24px;margin-top:60px;}
+
+footer{
+background:var(--blue-dark);
+color:white;
+text-align:center;
+padding:24px;
+margin-top:60px;
+}
 
 @media(max-width:768px){
 
@@ -125,114 +123,4 @@ section{padding:60px 20px;}
 
 <body>
 
-<header>
-<div class="logo">FOCS — FO Construction Services</div>
-<div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
-<nav>
-<a href="#home" data-es="Inicio" data-en="Home"></a>
-<a href="#about" data-es="Sobre FOCS" data-en="About"></a>
-<a href="#services" data-es="Servicios" data-en="Services"></a>
-<a href="#projects" data-es="Proyectos" data-en="Projects"></a>
-<a href="#clients" data-es="Clientes" data-en="Clients"></a>
-<a href="#contact" data-es="Contacto" data-en="Contact"></a>
-<span class="lang-btn" onclick="toggleLanguage()">ES / EN</span>
-</nav>
-
-<div id="mobileMenu" class="mobile-menu">
-<a href="#home" data-es="Inicio" data-en="Home"></a>
-<a href="#about" data-es="Sobre FOCS" data-en="About"></a>
-<a href="#services" data-es="Servicios" data-en="Services"></a>
-<a href="#projects" data-es="Proyectos" data-en="Projects"></a>
-<a href="#clients" data-es="Clientes" data-en="Clients"></a>
-<a href="#contact" data-es="Contacto" data-en="Contact"></a>
-<a href="#" class="lang-btn" onclick="toggleLanguage()">ES / EN</a>
-</div>
-
-</header>
-
-<section class="hero" id="home">
-<h1 data-es="Ingeniería, Construcción y Gestión de Proyectos con Más de 30 Años de Experiencia"
-data-en="Engineering, Construction & Project Management with Over 30 Years of Experience"></h1>
-
-<p data-es="FOCS es una firma de ingeniería y construcción fundada en 2020, respaldada por más de 30 años de experiencia acumulada en dirección, ejecución y control de proyectos industriales, comerciales, privados e infraestructura bajo estándares internacionales."
-data-en="FOCS is an engineering and construction firm founded in 2020, backed by over 30 years of accumulated experience in leadership, execution, and control of industrial, commercial, private, and infrastructure projects under international standards."></p>
-
-<a href="#contact" class="cta-btn"
-data-es="Iniciar Proyecto"
-data-en="Start a Project"></a>
-</section>
-
-<section id="about">
-<h2 class="section-title" data-es="Sobre FOCS" data-en="About FOCS"></h2>
-<p data-es="FOCS — FO Construction Services es una empresa de ingeniería y gestión de proyectos fundada en 2020..."
-data-en="FOCS — FO Construction Services is an engineering and project management company founded in 2020..."></p>
-</section>
-
-<section id="services">
-<h2 class="section-title" data-es="Servicios" data-en="Services"></h2>
-<div class="grid">
-<div class="card">Construction Management</div>
-<div class="card">Project Management</div>
-<div class="card">Technical Supervision</div>
-<div class="card">Quality Control</div>
-<div class="card">Cost Control & Budgeting</div>
-<div class="card">Engineering Consulting</div>
-<div class="card">Risk & Safety Management</div>
-<div class="card">Photovoltaic & Energy Solutions</div>
-</div>
-</section>
-
-<section id="projects">
-<h2 class="section-title" data-es="Proyectos" data-en="Projects"></h2>
-<p>Project gallery coming soon.</p>
-</section>
-
-<section id="clients">
-<h2 class="section-title" data-es="Clientes" data-en="Clients"></h2>
-<div class="clients">
-<span>GEA</span>
-<span>ThyssenKrupp</span>
-<span>HOLTEC International</span>
-<span>City of San Antonio</span>
-<span>SPIG</span>
-</div>
-</section>
-
-<section id="contact">
-<h2 class="section-title" data-es="Contacto" data-en="Contact"></h2>
-</section>
-
-<footer>
-<p>© 2026 FOCS — FO Construction Services</p>
-</footer>
-
-<script>
-let currentLang="es";
-
-function detectLanguage(){
-const userLang=navigator.language||navigator.userLanguage;
-currentLang=userLang.startsWith("es")?"es":"en";
-updateLanguage();
-}
-
-function toggleLanguage(){
-currentLang=currentLang==="es"?"en":"es";
-updateLanguage();
-}
-
-function updateLanguage(){
-document.querySelectorAll("[data-es]").forEach(el=>{
-el.textContent=el.getAttribute("data-"+currentLang);
-});
-}
-
-function toggleMenu(){
-document.getElementById("mobileMenu").classList.toggle("active");
-}
-
-detectLanguage();
-</script>
-
-</body>
-</html>
+<
