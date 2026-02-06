@@ -15,9 +15,7 @@
 }
 
 html{scroll-behavior:smooth;}
-
 *{box-sizing:border-box;margin:0;padding:0;font-family:"Inter",sans-serif;}
-
 body{background:var(--gray-light);line-height:1.65;}
 
 /* HEADER */
@@ -33,15 +31,42 @@ top:0;
 z-index:1000;
 }
 
-.logo{font-weight:700;}
-
-nav{display:flex;gap:18px;}
+nav{
+display:flex;
+gap:18px;
+}
 
 nav a{color:white;text-decoration:none;font-size:14px;}
 
-.lang-btn{cursor:pointer;border:1px solid white;padding:4px 10px;border-radius:6px;}
+.lang-btn{
+cursor:pointer;
+border:1px solid white;
+padding:4px 10px;
+border-radius:6px;
+}
 
 .menu-toggle{display:none;font-size:22px;cursor:pointer;}
+
+/* MOBILE MENU */
+.mobile-menu{
+display:none;
+position:absolute;
+top:60px;
+left:0;
+width:100%;
+background:var(--blue-dark);
+padding:10px 0;
+}
+
+.mobile-menu a{
+display:block;
+padding:14px 24px;
+border-top:1px solid rgba(255,255,255,.1);
+color:white;
+text-decoration:none;
+}
+
+.mobile-menu.active{display:block;}
 
 /* HERO */
 .hero{
@@ -84,23 +109,12 @@ border:1px solid #E2E6EA;
 }
 
 .clients{display:flex;flex-wrap:wrap;gap:18px;margin-top:20px;font-weight:600;}
-
 footer{background:var(--blue-dark);color:white;text-align:center;padding:24px;margin-top:60px;}
 
-/* MOBILE */
 @media(max-width:768px){
 
 .menu-toggle{display:block;}
-
-nav{
-display:none;
-flex-direction:column;
-width:100%;
-margin-top:10px;
-}
-
-nav.active{display:flex;}
-
+nav{display:none;}
 .hero{padding:90px 20px;}
 .hero h1{font-size:28px;}
 section{padding:60px 20px;}
@@ -114,7 +128,8 @@ section{padding:60px 20px;}
 <header>
 <div class="logo">FOCS — FO Construction Services</div>
 <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-<nav id="navMenu">
+
+<nav>
 <a href="#home" data-es="Inicio" data-en="Home"></a>
 <a href="#about" data-es="Sobre FOCS" data-en="About"></a>
 <a href="#services" data-es="Servicios" data-en="Services"></a>
@@ -123,14 +138,25 @@ section{padding:60px 20px;}
 <a href="#contact" data-es="Contacto" data-en="Contact"></a>
 <span class="lang-btn" onclick="toggleLanguage()">ES / EN</span>
 </nav>
+
+<div id="mobileMenu" class="mobile-menu">
+<a href="#home" data-es="Inicio" data-en="Home"></a>
+<a href="#about" data-es="Sobre FOCS" data-en="About"></a>
+<a href="#services" data-es="Servicios" data-en="Services"></a>
+<a href="#projects" data-es="Proyectos" data-en="Projects"></a>
+<a href="#clients" data-es="Clientes" data-en="Clients"></a>
+<a href="#contact" data-es="Contacto" data-en="Contact"></a>
+<a href="#" class="lang-btn" onclick="toggleLanguage()">ES / EN</a>
+</div>
+
 </header>
 
 <section class="hero" id="home">
 <h1 data-es="Ingeniería, Construcción y Gestión de Proyectos con Más de 30 Años de Experiencia"
 data-en="Engineering, Construction & Project Management with Over 30 Years of Experience"></h1>
 
-<p data-es="FOCS es una firma de ingeniería y construcción fundada en 2020, respaldada por más de 30 años de experiencia acumulada..."
-data-en="FOCS is an engineering and construction firm founded in 2020, backed by over 30 years of accumulated experience..."></p>
+<p data-es="FOCS es una firma de ingeniería y construcción fundada en 2020, respaldada por más de 30 años de experiencia acumulada en dirección, ejecución y control de proyectos industriales, comerciales, privados e infraestructura bajo estándares internacionales."
+data-en="FOCS is an engineering and construction firm founded in 2020, backed by over 30 years of accumulated experience in leadership, execution, and control of industrial, commercial, private, and infrastructure projects under international standards."></p>
 
 <a href="#contact" class="cta-btn"
 data-es="Iniciar Proyecto"
@@ -146,15 +172,20 @@ data-en="FOCS — FO Construction Services is an engineering and project managem
 <section id="services">
 <h2 class="section-title" data-es="Servicios" data-en="Services"></h2>
 <div class="grid">
-<div class="card" data-es="Gestión de Construcción — Planeación, ejecución y control de obra."
-data-en="Construction Management — Planning, execution and site control."></div>
-<div class="card" data-es="Gestión de Proyectos — Dirección integral de proyectos."
-data-en="Project Management — Full project leadership."></div>
+<div class="card">Construction Management</div>
+<div class="card">Project Management</div>
+<div class="card">Technical Supervision</div>
+<div class="card">Quality Control</div>
+<div class="card">Cost Control & Budgeting</div>
+<div class="card">Engineering Consulting</div>
+<div class="card">Risk & Safety Management</div>
+<div class="card">Photovoltaic & Energy Solutions</div>
 </div>
 </section>
 
 <section id="projects">
 <h2 class="section-title" data-es="Proyectos" data-en="Projects"></h2>
+<p>Project gallery coming soon.</p>
 </section>
 
 <section id="clients">
@@ -163,6 +194,8 @@ data-en="Project Management — Full project leadership."></div>
 <span>GEA</span>
 <span>ThyssenKrupp</span>
 <span>HOLTEC International</span>
+<span>City of San Antonio</span>
+<span>SPIG</span>
 </div>
 </section>
 
@@ -195,7 +228,7 @@ el.textContent=el.getAttribute("data-"+currentLang);
 }
 
 function toggleMenu(){
-document.getElementById("navMenu").classList.toggle("active");
+document.getElementById("mobileMenu").classList.toggle("active");
 }
 
 detectLanguage();
