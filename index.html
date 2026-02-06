@@ -10,194 +10,143 @@
 
 <style>
 :root {
-  --blue-dark: #0B2A4A;
-  --blue-accent: #1E6FB9;
-  --gray-dark: #2E2E2E;
-  --gray-light: #F4F6F8;
-  --white: #FFFFFF;
+  --blue-dark:#0B2A4A;
+  --blue-accent:#1E6FB9;
+  --gray-light:#F4F6F8;
 }
 
-html {
-  scroll-behavior: smooth;
+html{scroll-behavior:smooth;}
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:"Inter",sans-serif;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: "Inter", sans-serif;
-}
-
-body {
-  background: var(--gray-light);
-  color: #222;
-  line-height: 1.65;
+body{
+background:var(--gray-light);
+line-height:1.65;
 }
 
 /* HEADER */
-header {
-  background: var(--blue-dark);
-  color: var(--white);
-  padding: 18px 64px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  backdrop-filter: blur(10px);
+header{
+background:var(--blue-dark);
+color:white;
+padding:18px 64px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:sticky;
+top:0;
+z-index:1000;
 }
 
-.logo {
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: 1px;
+nav{
+display:flex;
+flex-wrap:wrap;
 }
 
-nav a {
-  color: white;
-  text-decoration: none;
-  margin-left: 22px;
-  font-size: 14px;
-  opacity: .9;
+nav a{
+color:white;
+text-decoration:none;
+margin-left:18px;
+font-size:14px;
+opacity:.9;
 }
 
-nav a:hover {
-  opacity: 1;
-}
+nav a:hover{opacity:1;}
 
-.lang-btn {
-  margin-left: 22px;
-  padding: 6px 14px;
-  border: 1px solid white;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 13px;
+.lang-btn{
+margin-left:18px;
+padding:6px 12px;
+border:1px solid white;
+border-radius:6px;
+cursor:pointer;
+font-size:13px;
 }
 
 /* HERO */
-.hero {
-  background: linear-gradient(rgba(11,42,74,.9), rgba(11,42,74,.9)), url('images/hero.jpg') center/cover no-repeat;
-  color: white;
-  padding: 140px 64px;
+.hero{
+background:linear-gradient(rgba(11,42,74,.9),rgba(11,42,74,.9)),url('images/hero.jpg') center/cover no-repeat;
+color:white;
+padding:140px 64px;
 }
 
-.hero h1 {
-  font-size: 46px;
-  max-width: 960px;
-  font-weight: 700;
-}
+.hero h1{font-size:46px;max-width:900px;}
+.hero p{margin-top:18px;max-width:700px;}
 
-.hero p {
-  margin-top: 18px;
-  max-width: 760px;
-  font-size: 17px;
-  opacity: .95;
-}
-
-.cta-btn {
-  display: inline-block;
-  margin-top: 30px;
-  padding: 14px 32px;
-  background: var(--blue-accent);
-  color: white;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
+.cta-btn{
+display:inline-block;
+margin-top:30px;
+padding:14px 32px;
+background:var(--blue-accent);
+color:white;
+border-radius:8px;
+text-decoration:none;
+font-weight:600;
 }
 
 /* SECTIONS */
-section {
-  padding: 90px 64px;
-  background: white;
-}
-
-.section-title {
-  font-size: 30px;
-  margin-bottom: 18px;
-  color: var(--blue-dark);
-  font-weight: 700;
-}
+section{padding:90px 64px;background:white;}
+.section-title{font-size:30px;margin-bottom:18px;color:var(--blue-dark);}
 
 /* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 26px;
-  margin-top: 28px;
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:26px;
+margin-top:28px;
 }
 
-.card {
-  background: #F7F9FB;
-  padding: 26px;
-  border-radius: 14px;
-  border: 1px solid #E2E6EA;
-  transition: .25s ease;
-  box-shadow: 0 6px 20px rgba(0,0,0,.05);
+.card{
+background:#F7F9FB;
+padding:26px;
+border-radius:14px;
+border:1px solid #E2E6EA;
+transition:.25s ease;
+box-shadow:0 6px 20px rgba(0,0,0,.05);
 }
 
-.card:hover {
-  transform: translateY(-8px);
-  border-color: var(--blue-accent);
-  box-shadow: 0 12px 28px rgba(0,0,0,.08);
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 12px 28px rgba(0,0,0,.08);
 }
 
-/* CLIENT STRIP */
-.clients {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
-  margin-top: 20px;
-  font-weight: 600;
+/* CLIENTS */
+.clients{
+display:flex;
+flex-wrap:wrap;
+gap:18px;
+margin-top:20px;
+font-weight:600;
 }
 
 /* FOOTER */
-footer {
-  background: var(--blue-dark);
-  color: white;
-  text-align: center;
-  padding: 24px;
-  margin-top: 60px;
-  font-size: 14px;
+footer{
+background:var(--blue-dark);
+color:white;
+text-align:center;
+padding:24px;
+margin-top:60px;
 }
 
 /* MOBILE */
-@media (max-width: 768px) {
+@media(max-width:768px){
 
-header {
-  padding: 16px 20px;
-  flex-direction: column;
-  align-items: flex-start;
+header{padding:16px 20px;flex-direction:column;align-items:flex-start;}
+
+nav{
+width:100%;
+overflow-x:auto;
+white-space:nowrap;
 }
 
-nav {
-  margin-top: 12px;
-}
+nav a{margin:10px 12px 0 0;}
 
-nav a {
-  display: block;
-  margin: 8px 0;
-}
-
-.hero {
-  padding: 90px 20px;
-}
-
-.hero h1 {
-  font-size: 28px;
-}
-
-.hero p {
-  font-size: 15px;
-}
-
-section {
-  padding: 60px 20px;
-}
-
-.grid {
-  grid-template-columns: 1fr;
-}
+.hero{padding:90px 20px;}
+.hero h1{font-size:28px;}
+section{padding:60px 20px;}
 
 }
 </style>
@@ -206,61 +155,53 @@ section {
 <body>
 
 <header>
-  <div class="logo">FOCS — FO Construction Services</div>
-  <nav>
-    <a href="#home" data-es="Inicio" data-en="Home"></a>
-    <a href="#about" data-es="Sobre FOCS" data-en="About"></a>
-    <a href="#services" data-es="Servicios" data-en="Services"></a>
-    <a href="#projects" data-es="Proyectos" data-en="Projects"></a>
-    <a href="#clients" data-es="Clientes" data-en="Clients"></a>
-    <a href="#contact" data-es="Contacto" data-en="Contact"></a>
-    <span class="lang-btn" onclick="toggleLanguage()">ES / EN</span>
-  </nav>
+<div class="logo">FOCS — FO Construction Services</div>
+<nav>
+<a href="#home" data-es="Inicio" data-en="Home"></a>
+<a href="#about" data-es="Sobre FOCS" data-en="About"></a>
+<a href="#services" data-es="Servicios" data-en="Services"></a>
+<a href="#projects" data-es="Proyectos" data-en="Projects"></a>
+<a href="#clients" data-es="Clientes" data-en="Clients"></a>
+<a href="#contact" data-es="Contacto" data-en="Contact"></a>
+<span class="lang-btn" onclick="toggleLanguage()">ES / EN</span>
+</nav>
 </header>
 
 <section class="hero" id="home">
-  <h1 data-es="Ingeniería, Construcción y Gestión de Proyectos con Más de 30 Años de Experiencia"
-      data-en="Engineering, Construction & Project Management with Over 30 Years of Experience"></h1>
+<h1 data-es="Ingeniería, Construcción y Gestión de Proyectos con Más de 30 Años de Experiencia"
+data-en="Engineering, Construction & Project Management with Over 30 Years of Experience"></h1>
 
-  <p data-es="FOCS es una firma de ingeniería y construcción fundada en 2020..."
-     data-en="FOCS is an engineering and construction firm founded in 2020..."></p>
+<p data-es="FOCS es una firma de ingeniería y construcción..."
+data-en="FOCS is an engineering and construction firm..."></p>
 
-  <a href="#contact" class="cta-btn"
-     data-es="Iniciar Proyecto"
-     data-en="Start a Project"></a>
+<a href="#contact" class="cta-btn"
+data-es="Iniciar Proyecto"
+data-en="Start a Project"></a>
 </section>
 
+<section id="about"><h2 class="section-title">About</h2></section>
+<section id="services"><h2 class="section-title">Services</h2></section>
+<section id="projects"><h2 class="section-title">Projects</h2></section>
+<section id="clients"><h2 class="section-title">Clients</h2></section>
+<section id="contact"><h2 class="section-title">Contact</h2></section>
+
 <footer>
-  <p>© 2026 FOCS — FO Construction Services</p>
+<p>© 2026 FOCS — FO Construction Services</p>
 </footer>
 
 <script>
-let currentLang = "es";
-
-function detectLanguage() {
-  const userLang = navigator.language || navigator.userLanguage;
-  currentLang = userLang.startsWith("es") ? "es" : "en";
-  updateLanguage();
-}
-
-function toggleLanguage() {
-  currentLang = currentLang === "es" ? "en" : "es";
-  updateLanguage();
-}
-
-function updateLanguage() {
-  document.querySelectorAll("[data-es]").forEach(el => {
-    el.textContent = el.getAttribute("data-" + currentLang);
-  });
-}
-
-detectLanguage();
-</script>
-
-</body>
-</html>
-
-
+let currentLang="es";
+function detectLanguage(){
+const userLang=navigator.language||navigator.userLanguage;
+currentLang=userLang.startsWith("es")?"es":"en";
+updateLanguage();}
+function toggleLanguage(){
+currentLang=currentLang==="es"?"en":"es";
+updateLanguage();}
+function updateLanguage(){
+document.querySelectorAll("[data-es]").forEach(el=>{
+el.textContent=el.getAttribute("data-"+currentLang);
+});}
 detectLanguage();
 </script>
 
