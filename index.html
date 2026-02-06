@@ -6,6 +6,8 @@
 
 <title>FOCS — FO Construction Services</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
 :root {
   --blue-dark: #0B2A4A;
@@ -15,11 +17,15 @@
   --white: #FFFFFF;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Segoe UI", Arial, sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 body {
@@ -36,6 +42,10 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
 }
 
 .logo {
@@ -85,16 +95,15 @@ nav a:hover {
   opacity: .95;
 }
 
-.hero button {
+.cta-btn {
+  display: inline-block;
   margin-top: 30px;
   padding: 14px 32px;
-  border: none;
   background: var(--blue-accent);
   color: white;
-  font-weight: 600;
   border-radius: 8px;
-  cursor: pointer;
-  font-size: 15px;
+  text-decoration: none;
+  font-weight: 600;
 }
 
 /* SECTIONS */
@@ -122,13 +131,15 @@ section {
   background: #F7F9FB;
   padding: 26px;
   border-radius: 14px;
-  transition: .25s ease;
   border: 1px solid #E2E6EA;
+  transition: .25s ease;
+  box-shadow: 0 6px 20px rgba(0,0,0,.05);
 }
 
 .card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-8px);
   border-color: var(--blue-accent);
+  box-shadow: 0 12px 28px rgba(0,0,0,.08);
 }
 
 /* CLIENT STRIP */
@@ -148,6 +159,46 @@ footer {
   padding: 24px;
   margin-top: 60px;
   font-size: 14px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+header {
+  padding: 16px 20px;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+nav {
+  margin-top: 12px;
+}
+
+nav a {
+  display: block;
+  margin: 8px 0;
+}
+
+.hero {
+  padding: 90px 20px;
+}
+
+.hero h1 {
+  font-size: 28px;
+}
+
+.hero p {
+  font-size: 15px;
+}
+
+section {
+  padding: 60px 20px;
+}
+
+.grid {
+  grid-template-columns: 1fr;
+}
+
 }
 </style>
 </head>
@@ -171,82 +222,12 @@ footer {
   <h1 data-es="Ingeniería, Construcción y Gestión de Proyectos con Más de 30 Años de Experiencia"
       data-en="Engineering, Construction & Project Management with Over 30 Years of Experience"></h1>
 
-  <p data-es="FOCS es una firma de ingeniería y construcción fundada en 2020, respaldada por más de 30 años de experiencia acumulada en dirección, ejecución y control de proyectos industriales, comerciales, privados e infraestructura bajo estándares internacionales."
-     data-en="FOCS is an engineering and construction firm founded in 2020, backed by over 30 years of accumulated experience in leadership, execution, and control of industrial, commercial, private, and infrastructure projects under international standards."></p>
+  <p data-es="FOCS es una firma de ingeniería y construcción fundada en 2020..."
+     data-en="FOCS is an engineering and construction firm founded in 2020..."></p>
 
-  <button data-es="Solicitar Información" data-en="Request Information"></button>
-</section>
-
-<section id="about">
-  <h2 class="section-title" data-es="Sobre FOCS" data-en="About FOCS"></h2>
-
-  <p data-es="FOCS — FO Construction Services es una empresa de ingeniería y gestión de proyectos fundada en 2020, con un equipo directivo que acumula más de 30 años de experiencia en construcción, supervisión técnica, control de costos y desarrollo de infraestructura de alto nivel."
-     data-en="FOCS — FO Construction Services is an engineering and project management company founded in 2020, led by an executive team with over 30 years of experience in construction, technical supervision, cost control, and high-level infrastructure development."></p>
-
-  <p style="margin-top:14px;" data-es="Operamos en Puebla, Ciudad de México y Guadalajara, entregando proyectos industriales, comerciales, privados y de infraestructura con enfoque en calidad, seguridad, eficiencia y estándares internacionales."
-     data-en="We operate in Puebla, Mexico City, and Guadalajara, delivering industrial, commercial, private, and infrastructure projects with a focus on quality, safety, efficiency, and international standards."></p>
-</section>
-
-<section id="services">
-  <h2 class="section-title" data-es="Servicios" data-en="Services"></h2>
-
-  <div class="grid">
-    <div class="card" data-es="Gestión de Construcción — Planeación, ejecución, control de obra, coordinación de contratistas y entrega bajo cronograma."
-         data-en="Construction Management — Planning, execution, site control, contractor coordination, and schedule compliance."></div>
-
-    <div class="card" data-es="Gestión de Proyectos — Dirección integral de alcance, costos, tiempos, riesgos y calidad."
-         data-en="Project Management — Full control of scope, costs, schedule, risks, and quality."></div>
-
-    <div class="card" data-es="Supervisión Técnica — Verificación de cumplimiento normativo, especificaciones técnicas y estándares internacionales."
-         data-en="Technical Supervision — Compliance verification with regulations, technical specifications, and international standards."></div>
-
-    <div class="card" data-es="Control de Calidad — Inspección, auditorías técnicas, pruebas de materiales y aseguramiento de calidad."
-         data-en="Quality Control — Technical audits, material testing, inspections, and quality assurance."></div>
-
-    <div class="card" data-es="Control de Costos y Presupuestos — Estimaciones, control financiero, valuaciones, y optimización de recursos."
-         data-en="Cost Control & Budgeting — Financial tracking, cost estimation, valuations, and resource optimization."></div>
-
-    <div class="card" data-es="Consultoría en Ingeniería — Estudios técnicos, ingeniería conceptual, ejecutiva y análisis de viabilidad."
-         data-en="Engineering Consulting — Technical studies, conceptual and executive engineering, and feasibility analysis."></div>
-
-    <div class="card" data-es="Gestión de Riesgos y Seguridad — Planeación preventiva, análisis de riesgos y cumplimiento en seguridad industrial."
-         data-en="Risk & Safety Management — Risk analysis, safety planning, and industrial compliance."></div>
-
-    <div class="card" data-es="Soluciones Fotovoltaicas y Energía — Desarrollo de sistemas solares, eficiencia energética y proyectos sustentables."
-         data-en="Photovoltaic & Energy Solutions — Solar system development, energy efficiency, and sustainable projects."></div>
-  </div>
-</section>
-
-<section id="projects">
-  <h2 class="section-title" data-es="Proyectos" data-en="Projects"></h2>
-
-  <p data-es="FOCS ha completado más de 50 proyectos relevantes en los sectores industrial, comercial, privado e infraestructura, desempeñando roles clave en ingeniería, supervisión, gestión y ejecución."
-     data-en="FOCS has completed over 50 major projects across industrial, commercial, private, and infrastructure sectors, playing key roles in engineering, supervision, management, and execution."></p>
-</section>
-
-<section id="clients">
-  <h2 class="section-title" data-es="Clientes y Experiencia" data-en="Clients & Experience"></h2>
-
-  <p data-es="FOCS ha colaborado con clientes corporativos e industriales de alto perfil, incluyendo GEA, ThyssenKrupp, HOLTEC International, City of San Antonio y SPIG, consolidando experiencia en proyectos de nivel internacional."
-     data-en="FOCS has worked with high-profile corporate and industrial clients including GEA, ThyssenKrupp, HOLTEC International, City of San Antonio, and SPIG, building strong international-level project experience."></p>
-
-  <div class="clients">
-    <span>GEA</span>
-    <span>ThyssenKrupp</span>
-    <span>HOLTEC International</span>
-    <span>City of San Antonio</span>
-    <span>SPIG</span>
-  </div>
-</section>
-
-<section id="contact">
-  <h2 class="section-title" data-es="Contacto" data-en="Contact"></h2>
-
-  <p data-es="Ubicaciones: Puebla, Ciudad de México y Guadalajara"
-     data-en="Locations: Puebla, Mexico City, and Guadalajara"></p>
-
-  <p style="margin-top:12px;" data-es="Para oportunidades de negocio, alianzas o información técnica, contáctanos a través de nuestro canal corporativo."
-     data-en="For business opportunities, partnerships, or technical inquiries, contact us through our corporate channel."></p>
+  <a href="#contact" class="cta-btn"
+     data-es="Iniciar Proyecto"
+     data-en="Start a Project"></a>
 </section>
 
 <footer>
@@ -272,6 +253,13 @@ function updateLanguage() {
     el.textContent = el.getAttribute("data-" + currentLang);
   });
 }
+
+detectLanguage();
+</script>
+
+</body>
+</html>
+
 
 detectLanguage();
 </script>
