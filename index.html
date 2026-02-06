@@ -3,37 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>FOCS — FO Construction Services</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --blue-dark:#0B2A4A;
-  --blue-accent:#1E6FB9;
-  --gray-light:#F4F6F8;
+:root{
+--blue-dark:#0B2A4A;
+--blue-accent:#1E6FB9;
+--gray-light:#F4F6F8;
 }
 
 html{scroll-behavior:smooth;}
 
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
-font-family:"Inter",sans-serif;
-}
+*{box-sizing:border-box;margin:0;padding:0;font-family:"Inter",sans-serif;}
 
-body{
-background:var(--gray-light);
-line-height:1.65;
-}
+body{background:var(--gray-light);line-height:1.65;}
 
 /* HEADER */
 header{
 background:var(--blue-dark);
 color:white;
-padding:18px 64px;
+padding:16px 40px;
 display:flex;
 justify-content:space-between;
 align-items:center;
@@ -42,29 +33,15 @@ top:0;
 z-index:1000;
 }
 
-nav{
-display:flex;
-flex-wrap:wrap;
-}
+.logo{font-weight:700;}
 
-nav a{
-color:white;
-text-decoration:none;
-margin-left:18px;
-font-size:14px;
-opacity:.9;
-}
+nav{display:flex;gap:18px;}
 
-nav a:hover{opacity:1;}
+nav a{color:white;text-decoration:none;font-size:14px;}
 
-.lang-btn{
-margin-left:18px;
-padding:6px 12px;
-border:1px solid white;
-border-radius:6px;
-cursor:pointer;
-font-size:13px;
-}
+.lang-btn{cursor:pointer;border:1px solid white;padding:4px 10px;border-radius:6px;}
+
+.menu-toggle{display:none;font-size:22px;cursor:pointer;}
 
 /* HERO */
 .hero{
@@ -74,7 +51,7 @@ padding:140px 64px;
 }
 
 .hero h1{font-size:46px;max-width:900px;}
-.hero p{margin-top:18px;max-width:700px;}
+.hero p{margin-top:18px;max-width:760px;}
 
 .cta-btn{
 display:inline-block;
@@ -104,45 +81,25 @@ background:#F7F9FB;
 padding:26px;
 border-radius:14px;
 border:1px solid #E2E6EA;
-transition:.25s ease;
-box-shadow:0 6px 20px rgba(0,0,0,.05);
 }
 
-.card:hover{
-transform:translateY(-8px);
-box-shadow:0 12px 28px rgba(0,0,0,.08);
-}
+.clients{display:flex;flex-wrap:wrap;gap:18px;margin-top:20px;font-weight:600;}
 
-/* CLIENTS */
-.clients{
-display:flex;
-flex-wrap:wrap;
-gap:18px;
-margin-top:20px;
-font-weight:600;
-}
-
-/* FOOTER */
-footer{
-background:var(--blue-dark);
-color:white;
-text-align:center;
-padding:24px;
-margin-top:60px;
-}
+footer{background:var(--blue-dark);color:white;text-align:center;padding:24px;margin-top:60px;}
 
 /* MOBILE */
 @media(max-width:768px){
 
-header{padding:16px 20px;flex-direction:column;align-items:flex-start;}
+.menu-toggle{display:block;}
 
 nav{
+display:none;
+flex-direction:column;
 width:100%;
-overflow-x:auto;
-white-space:nowrap;
+margin-top:10px;
 }
 
-nav a{margin:10px 12px 0 0;}
+nav.active{display:flex;}
 
 .hero{padding:90px 20px;}
 .hero h1{font-size:28px;}
@@ -156,7 +113,8 @@ section{padding:60px 20px;}
 
 <header>
 <div class="logo">FOCS — FO Construction Services</div>
-<nav>
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+<nav id="navMenu">
 <a href="#home" data-es="Inicio" data-en="Home"></a>
 <a href="#about" data-es="Sobre FOCS" data-en="About"></a>
 <a href="#services" data-es="Servicios" data-en="Services"></a>
@@ -171,19 +129,46 @@ section{padding:60px 20px;}
 <h1 data-es="Ingeniería, Construcción y Gestión de Proyectos con Más de 30 Años de Experiencia"
 data-en="Engineering, Construction & Project Management with Over 30 Years of Experience"></h1>
 
-<p data-es="FOCS es una firma de ingeniería y construcción..."
-data-en="FOCS is an engineering and construction firm..."></p>
+<p data-es="FOCS es una firma de ingeniería y construcción fundada en 2020, respaldada por más de 30 años de experiencia acumulada..."
+data-en="FOCS is an engineering and construction firm founded in 2020, backed by over 30 years of accumulated experience..."></p>
 
 <a href="#contact" class="cta-btn"
 data-es="Iniciar Proyecto"
 data-en="Start a Project"></a>
 </section>
 
-<section id="about"><h2 class="section-title">About</h2></section>
-<section id="services"><h2 class="section-title">Services</h2></section>
-<section id="projects"><h2 class="section-title">Projects</h2></section>
-<section id="clients"><h2 class="section-title">Clients</h2></section>
-<section id="contact"><h2 class="section-title">Contact</h2></section>
+<section id="about">
+<h2 class="section-title" data-es="Sobre FOCS" data-en="About FOCS"></h2>
+<p data-es="FOCS — FO Construction Services es una empresa de ingeniería y gestión de proyectos fundada en 2020..."
+data-en="FOCS — FO Construction Services is an engineering and project management company founded in 2020..."></p>
+</section>
+
+<section id="services">
+<h2 class="section-title" data-es="Servicios" data-en="Services"></h2>
+<div class="grid">
+<div class="card" data-es="Gestión de Construcción — Planeación, ejecución y control de obra."
+data-en="Construction Management — Planning, execution and site control."></div>
+<div class="card" data-es="Gestión de Proyectos — Dirección integral de proyectos."
+data-en="Project Management — Full project leadership."></div>
+</div>
+</section>
+
+<section id="projects">
+<h2 class="section-title" data-es="Proyectos" data-en="Projects"></h2>
+</section>
+
+<section id="clients">
+<h2 class="section-title" data-es="Clientes" data-en="Clients"></h2>
+<div class="clients">
+<span>GEA</span>
+<span>ThyssenKrupp</span>
+<span>HOLTEC International</span>
+</div>
+</section>
+
+<section id="contact">
+<h2 class="section-title" data-es="Contacto" data-en="Contact"></h2>
+</section>
 
 <footer>
 <p>© 2026 FOCS — FO Construction Services</p>
@@ -191,17 +176,28 @@ data-en="Start a Project"></a>
 
 <script>
 let currentLang="es";
+
 function detectLanguage(){
 const userLang=navigator.language||navigator.userLanguage;
 currentLang=userLang.startsWith("es")?"es":"en";
-updateLanguage();}
+updateLanguage();
+}
+
 function toggleLanguage(){
 currentLang=currentLang==="es"?"en":"es";
-updateLanguage();}
+updateLanguage();
+}
+
 function updateLanguage(){
 document.querySelectorAll("[data-es]").forEach(el=>{
 el.textContent=el.getAttribute("data-"+currentLang);
-});}
+});
+}
+
+function toggleMenu(){
+document.getElementById("navMenu").classList.toggle("active");
+}
+
 detectLanguage();
 </script>
 
