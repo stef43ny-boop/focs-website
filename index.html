@@ -49,12 +49,11 @@ top:60px;
 left:0;
 width:100%;
 background:var(--blue-dark);
-padding:10px 0;
 }
 
 .mobile-menu a{
 display:block;
-padding:14px 24px;
+padding:16px 24px;
 border-top:1px solid rgba(255,255,255,.1);
 color:white;
 text-decoration:none;
@@ -126,55 +125,112 @@ section{padding:60px 20px;}
 <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
 <nav>
-<a href="#home">Home</a>
-<a href="#about">About</a>
-<a href="#services">Services</a>
-<a href="#projects">Projects</a>
-<a href="#clients">Clients</a>
-<a href="#contact">Contact</a>
+<a href="#home" data-es="Inicio" data-en="Home"></a>
+<a href="#about" data-es="Sobre FOCS" data-en="About"></a>
+<a href="#services" data-es="Servicios" data-en="Services"></a>
+<a href="#projects" data-es="Proyectos" data-en="Projects"></a>
+<a href="#clients" data-es="Clientes" data-en="Clients"></a>
+<a href="#contact" data-es="Contacto" data-en="Contact"></a>
+<span class="lang-btn" onclick="toggleLanguage()">ES / EN</span>
 </nav>
+
+<div id="mobileMenu" class="mobile-menu">
+<a href="#home" data-es="Inicio" data-en="Home"></a>
+<a href="#about" data-es="Sobre FOCS" data-en="About"></a>
+<a href="#services" data-es="Servicios" data-en="Services"></a>
+<a href="#projects" data-es="Proyectos" data-en="Projects"></a>
+<a href="#clients" data-es="Clientes" data-en="Clients"></a>
+<a href="#contact" data-es="Contacto" data-en="Contact"></a>
+<a href="#" onclick="toggleLanguage()">ES / EN</a>
+</div>
 </header>
 
 <section class="hero" id="home">
-<h1>Engineering, Construction & Project Management</h1>
-<p>FOCS delivers industrial, commercial and infrastructure projects under international standards.</p>
-<a href="#contact" class="cta-btn">Start a Project</a>
+<h1 data-es="Ingeniería, Construcción y Gestión de Proyectos con Más de 30 Años de Experiencia"
+data-en="Engineering, Construction & Project Management with Over 30 Years of Experience"></h1>
+
+<p data-es="FOCS es una firma de ingeniería y construcción respaldada por más de 30 años de experiencia en proyectos industriales, comerciales e infraestructura bajo estándares internacionales."
+data-en="FOCS is an engineering and construction firm backed by over 30 years of experience in industrial, commercial and infrastructure projects under international standards."></p>
+
+<a href="#contact" class="cta-btn"
+data-es="Iniciar Proyecto"
+data-en="Start a Project"></a>
 </section>
 
 <section id="about">
-<h2 class="section-title">About FOCS</h2>
-<p>FOCS is an engineering and project management firm with extensive experience in construction and infrastructure development.</p>
+<h2 class="section-title" data-es="Sobre FOCS" data-en="About FOCS"></h2>
+<p data-es="FOCS — FO Construction Services es una firma especializada en ingeniería, gestión de proyectos y supervisión técnica internacional."
+data-en="FOCS — FO Construction Services is a firm specialized in engineering, project management and international technical supervision."></p>
 </section>
 
 <section id="services">
-<h2 class="section-title">Services</h2>
+<h2 class="section-title" data-es="Servicios" data-en="Services"></h2>
 <div class="grid">
 <div class="card">Construction Management</div>
 <div class="card">Project Management</div>
 <div class="card">Technical Supervision</div>
 <div class="card">Quality Control</div>
+<div class="card">Cost Control & Budgeting</div>
+<div class="card">Engineering Consulting</div>
+<div class="card">Risk & Safety Management</div>
+<div class="card">Photovoltaic & Energy Solutions</div>
 </div>
 </section>
 
 <section id="projects">
-<h2 class="section-title">Projects</h2>
+<h2 class="section-title" data-es="Proyectos" data-en="Projects"></h2>
 <p>Project gallery coming soon.</p>
 </section>
 
 <section id="clients">
-<h2 class="section-title">Clients</h2>
+<h2 class="section-title" data-es="Clientes" data-en="Clients"></h2>
 <div class="clients">
 <span>GEA</span>
 <span>ThyssenKrupp</span>
-<span>HOLTEC</span>
+<span>HOLTEC International</span>
+<span>City of San Antonio</span>
+<span>SPIG</span>
 </div>
 </section>
 
 <section id="contact">
-<h2 class="section-title">Contact</h2>
+<h2 class="section-title" data-es="Contacto" data-en="Contact"></h2>
 </section>
 
 <footer>
+<p>© 2026 FOCS — FO Construction Services</p>
+</footer>
+
+<script>
+let currentLang="es";
+
+function detectLanguage(){
+const userLang=navigator.language||navigator.userLanguage;
+currentLang=userLang.startsWith("es")?"es":"en";
+updateLanguage();
+}
+
+function toggleLanguage(){
+currentLang=currentLang==="es"?"en":"es";
+updateLanguage();
+}
+
+function updateLanguage(){
+document.querySelectorAll("[data-es]").forEach(el=>{
+el.textContent=el.getAttribute("data-"+currentLang);
+});
+}
+
+function toggleMenu(){
+document.getElementById("mobileMenu").classList.toggle("active");
+}
+
+detectLanguage();
+</script>
+
+</body>
+</html>
+
 <p>© 2026 FOCS — FO Construction Services</p>
 </footer>
 
