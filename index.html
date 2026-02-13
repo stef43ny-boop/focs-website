@@ -10,8 +10,7 @@
 <meta name="description" content="FOCS — Engineering, Construction and Project Management firm with over 30 years of international experience.">
 <meta name="theme-color" content="#0B2A4A">
 
-<link rel="icon" type="image/png" href="images/favicon.png">
-<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="icon" href="images/favicon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,201 +25,126 @@
 --gray-light:#F4F6F8;
 }
 
-html{scroll-behavior:smooth;}
-
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
-font-family:"Inter",sans-serif;
-}
-
-body{
-background:var(--gray-light);
-line-height:1.65;
-font-size:17px;
-color:#1B1F23;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif;}
+body{background:var(--gray-light);font-size:17px;color:#1B1F23;line-height:1.6;}
 
 header{
-background:rgba(11,42,74,.95);
-backdrop-filter:blur(12px);
-color:white;
-padding:16px 40px;
+position:fixed;
+top:0;
+width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-position:sticky;
-top:0;
+padding:16px 40px;
+background:rgba(11,42,74,.7);
+backdrop-filter:blur(10px);
+transition:.3s;
 z-index:1000;
 }
 
-nav{display:flex;gap:18px;}
+header.scrolled{
+background:rgba(11,42,74,.95);
+padding:12px 40px;
+}
+
+nav{display:flex;gap:20px;}
 
 nav a{
 color:white;
 text-decoration:none;
 font-size:14px;
+position:relative;
 }
 
-.lang-btn{
-cursor:pointer;
-border:1px solid white;
-padding:4px 10px;
-border-radius:6px;
-}
-
-.menu-toggle{
-display:none;
-flex-direction:column;
-gap:5px;
-cursor:pointer;
-}
-
-.menu-toggle span{
-width:26px;
-height:3px;
+nav a::after{
+content:"";
+position:absolute;
+bottom:-4px;
+left:0;
+width:0%;
+height:2px;
 background:white;
-border-radius:2px;
-transition:.35s ease;
+transition:.3s;
 }
 
-.menu-toggle.active span:nth-child(1){
-transform:rotate(45deg) translate(5px,5px);
-}
+nav a:hover::after{width:100%;}
 
-.menu-toggle.active span:nth-child(2){
-opacity:0;
-}
-
-.menu-toggle.active span:nth-child(3){
-transform:rotate(-45deg) translate(6px,-6px);
-}
+.menu-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+.menu-toggle span{width:26px;height:3px;background:white;transition:.3s;}
+.menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.menu-toggle.active span:nth-child(2){opacity:0;}
+.menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px);}
 
 .mobile-menu{
-display:block;
+position:absolute;
+top:60px;
+width:100%;
+background:var(--blue-dark);
 max-height:0;
 overflow:hidden;
 opacity:0;
-transform:translateY(-10px);
-transition:.35s ease;
-position:absolute;
-top:60px;
-left:0;
-width:100%;
-background:var(--blue-dark);
+transition:.3s;
 }
 
-.mobile-menu a{
-display:block;
-padding:16px 24px;
-border-top:1px solid rgba(255,255,255,.1);
-color:white;
-text-decoration:none;
-}
+.mobile-menu.active{max-height:500px;opacity:1;}
 
-.mobile-menu.active{
-max-height:500px;
-opacity:1;
-transform:translateY(0);
-}
+.mobile-menu a{display:block;padding:16px;color:white;text-decoration:none;border-top:1px solid rgba(255,255,255,.1);}
 
 .hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+padding:0 64px;
 background:linear-gradient(rgba(11,42,74,.9),rgba(11,42,74,.9)),url('images/hero.webp') center/cover no-repeat;
 color:white;
-padding:120px 64px 100px;
+opacity:0;
+transform:translateY(40px);
+animation:heroFade 1.2s forwards;
 }
 
-.hero h1{
-font-size:46px;
-max-width:900px;
+@keyframes heroFade{
+to{opacity:1;transform:translateY(0);}
 }
 
-.hero p{
-margin-top:18px;
-max-width:760px;
-}
+.hero h1{font-size:48px;max-width:900px;}
+.hero p{margin-top:18px;max-width:700px;}
 
-.cta-btn{
-display:inline-block;
-margin-top:30px;
-padding:14px 32px;
-background:var(--blue-accent);
-color:white;
-border-radius:8px;
-text-decoration:none;
-font-weight:600;
-}
+.cta-btn{margin-top:30px;background:var(--blue-accent);padding:14px 30px;border-radius:8px;color:white;text-decoration:none;}
 
-section{
-padding:90px 64px;
-background:white;
-}
+section{padding:100px 64px;background:white;}
 
-.section-title{
-font-size:30px;
-margin-bottom:18px;
-color:var(--blue-dark);
-}
+.reveal{opacity:0;transform:translateY(40px);transition:1s;}
+.reveal.active{opacity:1;transform:translateY(0);}
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:26px;
-margin-top:28px;
-}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;margin-top:30px;}
 
 .card{
 background:#F7F9FB;
-padding:26px;
+padding:24px;
 border-radius:14px;
 border:1px solid #E2E6EA;
-transition:.25s ease;
+transition:.3s;
 }
 
-.card:hover{
-transform:translateY(-6px);
-box-shadow:0 14px 30px rgba(0,0,0,.08);
-}
+.card:hover{transform:translateY(-6px);box-shadow:0 16px 30px rgba(0,0,0,.08);}
+.card img{width:100%;border-radius:10px;margin-bottom:12px;}
 
-.card img{
-width:100%;
-border-radius:10px;
-margin-bottom:14px;
-}
+.clients{display:flex;flex-wrap:wrap;gap:40px;align-items:center;margin-top:30px;}
+.clients img{height:40px;filter:grayscale(1);opacity:.8;transition:.3s;}
+.clients img:hover{filter:none;opacity:1;}
 
-.clients{
-display:flex;
-flex-wrap:wrap;
-gap:18px;
-margin-top:20px;
-font-weight:600;
-}
-
-footer{
-background:var(--blue-dark);
-color:white;
-text-align:center;
-padding:24px;
-margin-top:60px;
-}
+footer{background:var(--blue-dark);color:white;text-align:center;padding:24px;}
 
 @media(max-width:768px){
 
 .menu-toggle{display:flex;}
 nav{display:none;}
 
-.hero{
-padding:90px 20px;
-}
+.hero{padding:0 20px;}
+.hero h1{font-size:28px;}
 
-.hero h1{
-font-size:28px;
-}
-
-section{
-padding:60px 20px;
-}
+section{padding:70px 20px;}
 
 }
 
@@ -229,114 +153,83 @@ padding:60px 20px;
 
 <body>
 
-<header>
+<header id="header">
 
-<img src="images/logo.svg" style="height:32px;" alt="FOCS Logo">
+<img src="images/logo.svg" style="height:32px;">
 
 <div class="menu-toggle" onclick="toggleMenu()">
-<span></span>
-<span></span>
-<span></span>
+<span></span><span></span><span></span>
 </div>
 
 <nav>
-<a href="#home" data-es="Inicio" data-en="Home">Inicio</a>
-<a href="#about" data-es="Sobre FOCS" data-en="About">Sobre FOCS</a>
-<a href="#services" data-es="Servicios" data-en="Services">Servicios</a>
-<a href="#projects" data-es="Proyectos" data-en="Projects">Proyectos</a>
-<a href="#clients" data-es="Clientes" data-en="Clients">Clientes</a>
-<a href="#contact" data-es="Contacto" data-en="Contact">Contacto</a>
-<span class="lang-btn" onclick="toggleLanguage()">ES / EN</span>
+<a href="#home">Inicio</a>
+<a href="#about">Sobre</a>
+<a href="#services">Servicios</a>
+<a href="#projects">Proyectos</a>
+<a href="#clients">Clientes</a>
+<a href="#contact">Contacto</a>
 </nav>
 
 <div id="mobileMenu" class="mobile-menu">
-<a href="#home" data-es="Inicio" data-en="Home">Inicio</a>
-<a href="#about" data-es="Sobre FOCS" data-en="About">Sobre FOCS</a>
-<a href="#services" data-es="Servicios" data-en="Services">Servicios</a>
-<a href="#projects" data-es="Proyectos" data-en="Projects">Proyectos</a>
-<a href="#clients" data-es="Clientes" data-en="Clients">Clientes</a>
-<a href="#contact" data-es="Contacto" data-en="Contact">Contacto</a>
-<a href="#" onclick="toggleLanguage()">ES / EN</a>
+<a href="#home">Inicio</a>
+<a href="#about">Sobre</a>
+<a href="#services">Servicios</a>
+<a href="#projects">Proyectos</a>
+<a href="#clients">Clientes</a>
+<a href="#contact">Contacto</a>
 </div>
 
 </header>
 
 <section class="hero" id="home">
-
-<h1 data-es="Ingeniería, Construcción y Gestión de Proyectos con Más de 30 Años de Experiencia"
-data-en="Engineering, Construction & Project Management with Over 30 Years of Experience">
-Ingeniería profesional internacional
-</h1>
-
-<p data-es="FOCS es una firma de ingeniería y construcción respaldada por más de 30 años de experiencia en proyectos industriales, comerciales e infraestructura bajo estándares internacionales."
-data-en="FOCS is an engineering and construction firm backed by over 30 years of experience in industrial, commercial and infrastructure projects under international standards.">
-Firma internacional de ingeniería
-</p>
-
-<a href="#contact" class="cta-btn"
-data-es="Iniciar Proyecto"
-data-en="Start a Project">
-Iniciar Proyecto
-</a>
-
+<h1>Engineering, Construction & Project Management</h1>
+<p>More than 30 years delivering industrial, commercial and infrastructure projects under international standards.</p>
+<a href="#contact" class="cta-btn">Start a Project</a>
 </section>
 
-<section id="about">
-<h2 class="section-title" data-es="Sobre FOCS" data-en="About FOCS">Sobre FOCS</h2>
-<p data-es="FOCS — FO Construction Services es una firma especializada en ingeniería, gestión de proyectos y supervisión técnica internacional."
-data-en="FOCS — FO Construction Services is a firm specialized in engineering, project management and international technical supervision.">
-Firma internacional
-</p>
+<section id="about" class="reveal">
+<h2>About FOCS</h2>
+<p>International engineering, construction management and technical supervision firm.</p>
 </section>
 
-<section id="services">
-<h2 class="section-title" data-es="Servicios" data-en="Services">Servicios</h2>
+<section id="services" class="reveal">
+<h2>Services</h2>
 <div class="grid">
 <div class="card">Construction Management</div>
 <div class="card">Project Management</div>
 <div class="card">Technical Supervision</div>
-<div class="card">Quality Control</div>
-<div class="card">Cost Control & Budgeting</div>
 <div class="card">Engineering Consulting</div>
-<div class="card">Risk & Safety Management</div>
-<div class="card">Photovoltaic & Energy Solutions</div>
 </div>
 </section>
 
-<section id="projects">
-<h2 class="section-title" data-es="Proyectos" data-en="Projects">Proyectos</h2>
-
+<section id="projects" class="reveal">
+<h2>Projects</h2>
 <div class="grid">
-
 <div class="card">
-<img src="images/project1.webp" alt="Project 1">
+<img src="images/project1.webp">
 <strong>Industrial Facility Expansion</strong>
-<p>Texas, USA — Construction Management</p>
+<p>USA — Construction Management</p>
 </div>
-
 <div class="card">
-<img src="images/project2.webp" alt="Project 2">
-<strong>Energy Infrastructure Upgrade</strong>
+<img src="images/project2.webp">
+<strong>Energy Infrastructure</strong>
 <p>Mexico — Technical Supervision</p>
 </div>
-
 </div>
-
 </section>
 
-<section id="clients">
-<h2 class="section-title" data-es="Clientes" data-en="Clients">Clientes</h2>
+<section id="clients" class="reveal">
+<h2>Clients</h2>
 <div class="clients">
-<span>GEA</span>
-<span>ThyssenKrupp</span>
-<span>HOLTEC International</span>
-<span>City of San Antonio</span>
-<span>SPIG</span>
+<img src="images/client1.webp">
+<img src="images/client2.webp">
+<img src="images/client3.webp">
+<img src="images/client4.webp">
 </div>
 </section>
 
-<section id="contact">
-<h2 class="section-title" data-es="Contacto" data-en="Contact">Contacto</h2>
+<section id="contact" class="reveal">
+<h2>Contact</h2>
 </section>
 
 <footer>
@@ -345,44 +238,21 @@ Firma internacional
 
 <script>
 
-let currentLang="es";
-
-function detectLanguage(){
-const userLang=navigator.language||navigator.userLanguage;
-currentLang=userLang.startsWith("es")?"es":"en";
-updateLanguage();
-}
-
-function toggleLanguage(){
-currentLang=currentLang==="es"?"en":"es";
-updateLanguage();
-}
-
-function updateLanguage(){
-document.documentElement.lang=currentLang;
-document.querySelectorAll("[data-es]").forEach(el=>{
-el.textContent=el.getAttribute("data-"+currentLang);
-});
-}
-
 function toggleMenu(){
-const menu=document.getElementById("mobileMenu");
-const toggle=document.querySelector(".menu-toggle");
-menu.classList.toggle("active");
-toggle.classList.toggle("active");
+document.getElementById("mobileMenu").classList.toggle("active");
+document.querySelector(".menu-toggle").classList.toggle("active");
 }
 
-document.querySelectorAll(".mobile-menu a").forEach(link=>{
-link.addEventListener("click",()=>{
-document.getElementById("mobileMenu").classList.remove("active");
-document.querySelector(".menu-toggle").classList.remove("active");
-});
-});
+window.addEventListener("scroll",()=>{
+document.getElementById("header").classList.toggle("scrolled",window.scrollY>40);
 
-detectLanguage();
+document.querySelectorAll(".reveal").forEach(el=>{
+const top=el.getBoundingClientRect().top;
+if(top<window.innerHeight-100){el.classList.add("active");}
+});
+});
 
 </script>
 
 </body>
 </html>
-
