@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -71,12 +72,38 @@ border-radius:6px;
 
 .menu-toggle{
 display:none;
-font-size:22px;
+flex-direction:column;
+gap:5px;
 cursor:pointer;
 }
 
+.menu-toggle span{
+width:26px;
+height:3px;
+background:white;
+border-radius:2px;
+transition:.35s ease;
+}
+
+.menu-toggle.active span:nth-child(1){
+transform:rotate(45deg) translate(5px,5px);
+}
+
+.menu-toggle.active span:nth-child(2){
+opacity:0;
+}
+
+.menu-toggle.active span:nth-child(3){
+transform:rotate(-45deg) translate(6px,-6px);
+}
+
 .mobile-menu{
-display:none;
+display:block;
+max-height:0;
+overflow:hidden;
+opacity:0;
+transform:translateY(-10px);
+transition:.35s ease;
 position:absolute;
 top:60px;
 left:0;
@@ -92,7 +119,11 @@ color:white;
 text-decoration:none;
 }
 
-.mobile-menu.active{display:block;}
+.mobile-menu.active{
+max-height:500px;
+opacity:1;
+transform:translateY(0);
+}
 
 .hero{
 background:linear-gradient(rgba(11,42,74,.9),rgba(11,42,74,.9)),url('images/hero.webp') center/cover no-repeat;
@@ -176,7 +207,7 @@ margin-top:60px;
 
 @media(max-width:768px){
 
-.menu-toggle{display:block;}
+.menu-toggle{display:flex;}
 nav{display:none;}
 
 .hero{
@@ -202,7 +233,11 @@ padding:60px 20px;
 
 <img src="images/logo.svg" style="height:32px;" alt="FOCS Logo">
 
-<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+<div class="menu-toggle" onclick="toggleMenu()">
+<span></span>
+<span></span>
+<span></span>
+</div>
 
 <nav>
 <a href="#home" data-es="Inicio" data-en="Home">Inicio</a>
@@ -248,7 +283,6 @@ Iniciar Proyecto
 
 <section id="about">
 <h2 class="section-title" data-es="Sobre FOCS" data-en="About FOCS">Sobre FOCS</h2>
-
 <p data-es="FOCS — FO Construction Services es una firma especializada en ingeniería, gestión de proyectos y supervisión técnica internacional."
 data-en="FOCS — FO Construction Services is a firm specialized in engineering, project management and international technical supervision.">
 Firma internacional
@@ -256,9 +290,7 @@ Firma internacional
 </section>
 
 <section id="services">
-
 <h2 class="section-title" data-es="Servicios" data-en="Services">Servicios</h2>
-
 <div class="grid">
 <div class="card">Construction Management</div>
 <div class="card">Project Management</div>
@@ -269,11 +301,9 @@ Firma internacional
 <div class="card">Risk & Safety Management</div>
 <div class="card">Photovoltaic & Energy Solutions</div>
 </div>
-
 </section>
 
 <section id="projects">
-
 <h2 class="section-title" data-es="Proyectos" data-en="Projects">Proyectos</h2>
 
 <div class="grid">
@@ -295,9 +325,7 @@ Firma internacional
 </section>
 
 <section id="clients">
-
 <h2 class="section-title" data-es="Clientes" data-en="Clients">Clientes</h2>
-
 <div class="clients">
 <span>GEA</span>
 <span>ThyssenKrupp</span>
@@ -305,7 +333,6 @@ Firma internacional
 <span>City of San Antonio</span>
 <span>SPIG</span>
 </div>
-
 </section>
 
 <section id="contact">
@@ -332,18 +359,25 @@ updateLanguage();
 }
 
 function updateLanguage(){
-
 document.documentElement.lang=currentLang;
-
 document.querySelectorAll("[data-es]").forEach(el=>{
 el.textContent=el.getAttribute("data-"+currentLang);
 });
-
 }
 
 function toggleMenu(){
-document.getElementById("mobileMenu").classList.toggle("active");
+const menu=document.getElementById("mobileMenu");
+const toggle=document.querySelector(".menu-toggle");
+menu.classList.toggle("active");
+toggle.classList.toggle("active");
 }
+
+document.querySelectorAll(".mobile-menu a").forEach(link=>{
+link.addEventListener("click",()=>{
+document.getElementById("mobileMenu").classList.remove("active");
+document.querySelector(".menu-toggle").classList.remove("active");
+});
+});
 
 detectLanguage();
 
@@ -351,3 +385,4 @@ detectLanguage();
 
 </body>
 </html>
+
