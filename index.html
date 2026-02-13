@@ -199,12 +199,12 @@ section{padding:70px 20px;}
 </nav>
 
 <div id="mobileMenu" class="mobile-menu">
-<a href="#home">Inicio</a>
-<a href="#about">Sobre</a>
-<a href="#services">Servicios</a>
-<a href="#projects">Proyectos</a>
-<a href="#clients">Clientes</a>
-<a href="#contact">Contacto</a>
+<a href="#home" data-es="Inicio" data-en="Home">Inicio</a>
+<a href="#about" data-es="Sobre" data-en="About">Sobre</a>
+<a href="#services" data-es="Servicios" data-en="Services">Servicios</a>
+<a href="#projects" data-es="Proyectos" data-en="Projects">Proyectos</a>
+<a href="#clients" data-es="Clientes" data-en="Clients">Clientes</a>
+<a href="#contact" data-es="Contacto" data-en="Contact">Contacto</a>
 </div>
 
 </header>
@@ -212,11 +212,11 @@ section{padding:70px 20px;}
 <section class="hero" id="home">
 <h1 data-es="Ingeniería, Construcción y Gestión de Proyectos"
 data-en="Engineering, Construction & Project Management">
-Ingeniería
+Ingeniería, Construcción y Gestión de Proyectos
 </h1>
 <p data-es="Más de 30 años de experiencia internacional."
 data-en="More than 30 years of international experience.">
-Experiencia
+Más de 30 años de experiencia internacional.
 </p>
 <a href="#contact" class="cta-btn"
 data-es="Iniciar Proyecto"
@@ -237,18 +237,26 @@ Iniciar Proyecto
 
 let currentLang="es";
 
-function toggleLanguage(){
-currentLang=currentLang==="es"?"en":"es";
+function applyLanguage(){
 document.documentElement.lang=currentLang;
 document.querySelectorAll("[data-es]").forEach(el=>{
 el.textContent=el.getAttribute("data-"+currentLang);
 });
 }
 
+function toggleLanguage(){
+currentLang=currentLang==="es"?"en":"es";
+applyLanguage();
+}
+
 function toggleMenu(){
 document.getElementById("mobileMenu").classList.toggle("active");
 document.querySelector(".menu-toggle").classList.toggle("active");
 }
+
+window.addEventListener("DOMContentLoaded",()=>{
+applyLanguage();
+});
 
 window.addEventListener("scroll",()=>{
 document.getElementById("header").classList.toggle("scrolled",window.scrollY>40);
