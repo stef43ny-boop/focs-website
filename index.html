@@ -1,113 +1,87 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Firma de Ingeniería</title>
 
-<title>FOCS — FO Construction Services</title>
-
-<meta name="description" content="FOCS — Engineering, Construction and Project Management firm with over 30 years of international experience.">
-<meta name="theme-color" content="#0B2A4A">
-
-<link rel="icon" type="image/png" href="images/favicon.png">
-<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="favicon.ico">
 
 <style>
 
-/* =====================
-RESET (CORRECCIÓN LÍNEA BLANCA)
-===================== */
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;}
+body{margin:0;background:#0f172a;color:white;}
 
-html,body{
-margin:0;
-padding:0;
-}
-
-:root{
---blue-dark:#0B2A4A;
---blue-accent:#1E6FB9;
---gray-light:#F4F6F8;
---text-dark:#1B1F23;
-}
-
-html{scroll-behavior:smooth;}
-
-*{
-box-sizing:border-box;
-font-family:"Inter",sans-serif;
-}
-
-body{
-background:var(--gray-light);
-line-height:1.65;
-font-size:17px;
-color:var(--text-dark);
-}
-
-/* =====================
-HEADER
-===================== */
-
+/* HEADER */
 header{
-background:rgba(11,42,74,.95);
-backdrop-filter:blur(12px);
-color:white;
-padding:16px 40px;
-display:flex;
-justify-content:space-between;
-align-items:center;
 position:fixed;
 top:0;
 left:0;
 width:100%;
+background:#020617;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 30px;
 z-index:1000;
-transition:.35s ease;
 }
 
-header.scrolled{
-padding:10px 40px;
-background:rgba(11,42,74,.98);
+nav ul{
+display:flex;
+list-style:none;
+gap:25px;
 }
-
-nav{display:flex;gap:18px;}
 
 nav a{
 color:white;
 text-decoration:none;
-font-size:14px;
-position:relative;
+transition:.3s;
 }
 
-nav a::after{
-content:"";
-position:absolute;
-left:0;
-bottom:-4px;
-width:0;
-height:2px;
-background:white;
-transition:.25s ease;
-}
+nav a:hover{opacity:.7}
 
-nav a:hover::after{width:100%;}
-
+/* BOTON IDIOMA */
 .lang-btn{
+background:#1e293b;
+border:none;
+color:white;
+padding:8px 12px;
 cursor:pointer;
-border:1px solid white;
-padding:4px 10px;
 border-radius:6px;
 }
 
-/* =====================
-MENU MOBILE
-===================== */
+/* HERO */
+.hero{
+padding-top:120px;
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
 
+.hero h1{font-size:3rem;margin-bottom:20px;}
+.hero p{max-width:600px;opacity:.8}
+
+/* SECCIONES */
+section{padding:100px 30px;max-width:1100px;margin:auto;}
+h2{margin-bottom:20px}
+
+/* REVEAL */
+.reveal{
+opacity:0;
+transform:translateY(40px);
+transition:.7s ease;
+}
+
+.reveal.visible{
+opacity:1;
+transform:translateY(0);
+}
+
+/* MENU MOVIL */
 .menu-toggle{
 display:none;
 flex-direction:column;
@@ -120,196 +94,54 @@ width:26px;
 height:3px;
 background:white;
 border-radius:2px;
-transition:.35s ease;
+transition:.35s;
 }
 
 .menu-toggle.active span:nth-child(1){
 transform:rotate(45deg) translate(5px,5px);
 }
 
-.menu-toggle.active span:nth-child(2){
-opacity:0;
-}
+.menu-toggle.active span:nth-child(2){opacity:0;}
 
 .menu-toggle.active span:nth-child(3){
 transform:rotate(-45deg) translate(6px,-6px);
 }
 
 .mobile-menu{
-display:block;
-max-height:0;
+display:none;
+flex-direction:column;
+background:#020617;
+position:absolute;
+top:70px;
+left:0;
+width:100%;
 overflow:hidden;
+max-height:0;
 opacity:0;
 transform:translateY(-10px);
 transition:.35s ease;
-position:absolute;
-top:60px;
-left:0;
-width:100%;
-background:var(--blue-dark);
 }
 
 .mobile-menu a{
-display:block;
-padding:16px 24px;
-border-top:1px solid rgba(255,255,255,.1);
+padding:15px 20px;
+border-bottom:1px solid #1e293b;
 color:white;
 text-decoration:none;
 }
 
 .mobile-menu.active{
+display:flex;
 max-height:500px;
 opacity:1;
 transform:translateY(0);
 }
 
-/* =====================
-HERO (SIN ESPACIO SUPERIOR)
-===================== */
-
-.hero{
-padding:160px 64px 120px;
-background:linear-gradient(rgba(11,42,74,.9),rgba(11,42,74,.9)),url('images/hero.webp') center/cover no-repeat;
-color:white;
-opacity:0;
-transform:translateY(20px);
-transition:1s ease;
-}
-
-.hero.visible{
-opacity:1;
-transform:translateY(0);
-}
-
-.hero h1{
-font-size:46px;
-max-width:900px;
-}
-
-.hero p{
-margin-top:18px;
-max-width:760px;
-}
-
-.cta-btn{
-display:inline-block;
-margin-top:30px;
-padding:14px 32px;
-background:var(--blue-accent);
-color:white;
-border-radius:8px;
-text-decoration:none;
-font-weight:600;
-transition:.25s ease;
-}
-
-.cta-btn:hover{
-transform:translateY(-2px);
-box-shadow:0 10px 20px rgba(0,0,0,.15);
-}
-
-/* =====================
-SECCIONES + ANIMACIÓN SCROLL
-===================== */
-
-section{
-padding:90px 64px;
-background:white;
-opacity:0;
-transform:translateY(40px);
-transition:.9s ease;
-}
-
-section.visible{
-opacity:1;
-transform:translateY(0);
-}
-
-.section-title{
-font-size:30px;
-margin-bottom:18px;
-color:var(--blue-dark);
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:26px;
-margin-top:28px;
-}
-
-.card{
-background:#F7F9FB;
-padding:26px;
-border-radius:14px;
-border:1px solid #E2E6EA;
-transition:.25s ease;
-text-decoration:none;
-color:inherit;
-}
-
-.card:hover{
-transform:translateY(-6px);
-box-shadow:0 14px 30px rgba(0,0,0,.08);
-}
-
-.card img{
-width:100%;
-border-radius:10px;
-margin-bottom:14px;
-}
-
-.clients{
-display:flex;
-flex-wrap:wrap;
-gap:28px;
-margin-top:20px;
-align-items:center;
-}
-
-.clients img{
-height:34px;
-filter:grayscale(100%);
-opacity:.7;
-transition:.25s ease;
-}
-
-.clients img:hover{
-filter:none;
-opacity:1;
-}
-
-/* =====================
-FOOTER
-===================== */
-
-footer{
-background:var(--blue-dark);
-color:white;
-text-align:center;
-padding:24px;
-}
-
-/* =====================
-RESPONSIVE
-===================== */
-
+/* RESPONSIVE */
 @media(max-width:768px){
 
+nav ul{display:none;}
+
 .menu-toggle{display:flex;}
-nav{display:none;}
-
-.hero{
-padding:130px 20px 90px;
-}
-
-.hero h1{
-font-size:28px;
-}
-
-section{
-padding:60px 20px;
-}
 
 }
 
@@ -318,9 +150,19 @@ padding:60px 20px;
 
 <body>
 
-<header id="header">
+<header>
 
-<img src="images/logo.svg" style="height:32px;" alt="FOCS Logo">
+<h3>INGENIERÍA</h3>
+
+<nav>
+<ul>
+<li><a href="#servicios" data-es="Servicios" data-en="Services">Servicios</a></li>
+<li><a href="#proyectos" data-es="Proyectos" data-en="Projects">Proyectos</a></li>
+<li><a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a></li>
+</ul>
+</nav>
+
+<button class="lang-btn" onclick="toggleLanguage()">EN</button>
 
 <div class="menu-toggle" onclick="toggleMenu()">
 <span></span>
@@ -328,93 +170,41 @@ padding:60px 20px;
 <span></span>
 </div>
 
-<nav>
-<a href="#home">Inicio</a>
-<a href="#about">Sobre FOCS</a>
-<a href="#services">Servicios</a>
-<a href="#projects">Proyectos</a>
-<a href="#clients">Clientes</a>
-<a href="#contact">Contacto</a>
-<span class="lang-btn">ES / EN</span>
-</nav>
-
-<div id="mobileMenu" class="mobile-menu">
-<a href="#home">Inicio</a>
-<a href="#about">Sobre FOCS</a>
-<a href="#services">Servicios</a>
-<a href="#projects">Proyectos</a>
-<a href="#clients">Clientes</a>
-<a href="#contact">Contacto</a>
+<div class="mobile-menu" id="mobileMenu">
+<a href="#servicios" data-es="Servicios" data-en="Services">Servicios</a>
+<a href="#proyectos" data-es="Proyectos" data-en="Projects">Proyectos</a>
+<a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a>
 </div>
 
 </header>
 
-<section class="hero reveal" id="home">
-<h1>Ingeniería, Construcción y Gestión de Proyectos con Más de 30 Años de Experiencia</h1>
-<p>FOCS es una firma de ingeniería y construcción respaldada por más de 30 años de experiencia en proyectos industriales, comerciales e infraestructura bajo estándares internacionales.</p>
-<a href="#contact" class="cta-btn">Iniciar Proyecto</a>
+<section class="hero reveal">
+<h1 data-es="Firma de Ingeniería Internacional" data-en="International Engineering Firm">
+Firma de Ingeniería Internacional
+</h1>
+<p data-es="Soluciones técnicas avanzadas para proyectos complejos." data-en="Advanced technical solutions for complex projects.">
+Soluciones técnicas avanzadas para proyectos complejos.
+</p>
 </section>
 
-<section id="about" class="reveal">
-<h2 class="section-title">Sobre FOCS</h2>
-<p>FOCS — FO Construction Services es una firma especializada en ingeniería, gestión de proyectos y supervisión técnica internacional.</p>
+<section id="servicios" class="reveal">
+<h2 data-es="Servicios" data-en="Services">Servicios</h2>
+<p>Consultoría técnica, diseño estructural y supervisión de obra.</p>
 </section>
 
-<section id="services" class="reveal">
-<h2 class="section-title">Servicios</h2>
-<div class="grid">
-<div class="card">Construction Management</div>
-<div class="card">Project Management</div>
-<div class="card">Technical Supervision</div>
-<div class="card">Quality Control</div>
-<div class="card">Cost Control & Budgeting</div>
-<div class="card">Engineering Consulting</div>
-<div class="card">Risk & Safety Management</div>
-<div class="card">Photovoltaic & Energy Solutions</div>
-</div>
+<section id="proyectos" class="reveal">
+<h2 data-es="Proyectos" data-en="Projects">Proyectos</h2>
+<p>Infraestructura, industrial y desarrollo urbano.</p>
 </section>
 
-<section id="projects" class="reveal">
-<h2 class="section-title">Proyectos</h2>
-<div class="grid">
-
-<a href="#" class="card">
-<img src="images/project1.webp">
-<strong>Industrial Facility Expansion</strong>
-<p>Texas, USA — Construction Management</p>
-</a>
-
-<a href="#" class="card">
-<img src="images/project2.webp">
-<strong>Energy Infrastructure Upgrade</strong>
-<p>Mexico — Technical Supervision</p>
-</a>
-
-</div>
+<section id="contacto" class="reveal">
+<h2 data-es="Contacto" data-en="Contact">Contacto</h2>
+<p>contacto@ingenieria.com</p>
 </section>
-
-<section id="clients" class="reveal">
-<h2 class="section-title">Clientes</h2>
-<div class="clients">
-<img src="images/client1.svg">
-<img src="images/client2.svg">
-<img src="images/client3.svg">
-<img src="images/client4.svg">
-<img src="images/client5.svg">
-</div>
-</section>
-
-<section id="contact" class="reveal">
-<h2 class="section-title">Contacto</h2>
-</section>
-
-<footer>
-<p>© 2026 FOCS — FO Construction Services</p>
-</footer>
 
 <script>
 
-/* MENU MOBILE */
+/* MENU MOVIL */
 function toggleMenu(){
 const menu=document.getElementById("mobileMenu");
 const toggle=document.querySelector(".menu-toggle");
@@ -422,37 +212,36 @@ menu.classList.toggle("active");
 toggle.classList.toggle("active");
 }
 
-document.querySelectorAll(".mobile-menu a").forEach(link=>{
-link.addEventListener("click",()=>{
-document.getElementById("mobileMenu").classList.remove("active");
-document.querySelector(".menu-toggle").classList.remove("active");
-});
-});
-
-/* HEADER SCROLL */
-window.addEventListener("scroll",()=>{
-document.getElementById("header").classList.toggle("scrolled",window.scrollY>60);
-});
-
-/* SCROLL REVEAL ANIMACIÓN SUAVE */
+/* SCROLL REVEAL */
 const observer=new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
 if(entry.isIntersecting){
 entry.target.classList.add("visible");
 }
 });
-},{threshold:.18});
+},{threshold:.15});
 
-document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
-
-/* HERO LOAD */
-window.addEventListener("load",()=>{
-document.querySelector(".hero").classList.add("visible");
+document.querySelectorAll(".reveal").forEach(el=>{
+observer.observe(el);
 });
+
+/* SISTEMA IDIOMA */
+let currentLang="es";
+
+function toggleLanguage(){
+
+currentLang=currentLang==="es"?"en":"es";
+
+document.querySelector(".lang-btn").innerText=
+currentLang==="es"?"EN":"ES";
+
+document.querySelectorAll("[data-es]").forEach(el=>{
+el.innerText=el.getAttribute("data-"+currentLang);
+});
+
+}
 
 </script>
 
 </body>
 </html>
-
-
