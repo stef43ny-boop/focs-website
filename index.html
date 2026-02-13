@@ -19,40 +19,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-
-/* =====================
-RESET (CORRECCIÓN LÍNEA BLANCA)
-===================== */
-
-html,body{
-margin:0;
-padding:0;
-}
-
+html,body{margin:0;padding:0;}
 :root{
 --blue-dark:#0B2A4A;
 --blue-accent:#1E6FB9;
 --gray-light:#F4F6F8;
 --text-dark:#1B1F23;
 }
-
 html{scroll-behavior:smooth;}
-
-*{
-box-sizing:border-box;
-font-family:"Inter",sans-serif;
-}
-
-body{
-background:var(--gray-light);
-line-height:1.65;
-font-size:17px;
-color:var(--text-dark);
-}
-
-/* =====================
-HEADER
-===================== */
+*{box-sizing:border-box;font-family:"Inter",sans-serif;}
+body{background:var(--gray-light);line-height:1.65;font-size:17px;color:var(--text-dark);}
 
 header{
 background:rgba(11,42,74,.95);
@@ -69,71 +45,18 @@ width:100%;
 z-index:1000;
 transition:.35s ease;
 }
-
-header.scrolled{
-padding:10px 40px;
-background:rgba(11,42,74,.98);
-}
-
+header.scrolled{padding:10px 40px;background:rgba(11,42,74,.98);}
 nav{display:flex;gap:18px;}
-
-nav a{
-color:white;
-text-decoration:none;
-font-size:14px;
-position:relative;
-}
-
-nav a::after{
-content:"";
-position:absolute;
-left:0;
-bottom:-4px;
-width:0;
-height:2px;
-background:white;
-transition:.25s ease;
-}
-
+nav a{color:white;text-decoration:none;font-size:14px;position:relative;}
+nav a::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:2px;background:white;transition:.25s ease;}
 nav a:hover::after{width:100%;}
+.lang-btn{cursor:pointer;border:1px solid white;padding:4px 10px;border-radius:6px;}
 
-.lang-btn{
-cursor:pointer;
-border:1px solid white;
-padding:4px 10px;
-border-radius:6px;
-}
-
-/* =====================
-MENU MOBILE
-===================== */
-
-.menu-toggle{
-display:none;
-flex-direction:column;
-gap:5px;
-cursor:pointer;
-}
-
-.menu-toggle span{
-width:26px;
-height:3px;
-background:white;
-border-radius:2px;
-transition:.35s ease;
-}
-
-.menu-toggle.active span:nth-child(1){
-transform:rotate(45deg) translate(5px,5px);
-}
-
-.menu-toggle.active span:nth-child(2){
-opacity:0;
-}
-
-.menu-toggle.active span:nth-child(3){
-transform:rotate(-45deg) translate(6px,-6px);
-}
+.menu-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+.menu-toggle span{width:26px;height:3px;background:white;border-radius:2px;transition:.35s ease;}
+.menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.menu-toggle.active span:nth-child(2){opacity:0;}
+.menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px);}
 
 .mobile-menu{
 display:block;
@@ -148,24 +71,8 @@ left:0;
 width:100%;
 background:var(--blue-dark);
 }
-
-.mobile-menu a{
-display:block;
-padding:16px 24px;
-border-top:1px solid rgba(255,255,255,.1);
-color:white;
-text-decoration:none;
-}
-
-.mobile-menu.active{
-max-height:500px;
-opacity:1;
-transform:translateY(0);
-}
-
-/* =====================
-HERO (SIN ESPACIO SUPERIOR)
-===================== */
+.mobile-menu a{display:block;padding:16px 24px;border-top:1px solid rgba(255,255,255,.1);color:white;text-decoration:none;}
+.mobile-menu.active{max-height:500px;opacity:1;transform:translateY(0);}
 
 .hero{
 padding:160px 64px 120px;
@@ -175,21 +82,9 @@ opacity:0;
 transform:translateY(20px);
 transition:1s ease;
 }
-
-.hero.visible{
-opacity:1;
-transform:translateY(0);
-}
-
-.hero h1{
-font-size:46px;
-max-width:900px;
-}
-
-.hero p{
-margin-top:18px;
-max-width:760px;
-}
+.hero.visible{opacity:1;transform:translateY(0);}
+.hero h1{font-size:46px;max-width:900px;}
+.hero p{margin-top:18px;max-width:760px;}
 
 .cta-btn{
 display:inline-block;
@@ -203,15 +98,6 @@ font-weight:600;
 transition:.25s ease;
 }
 
-.cta-btn:hover{
-transform:translateY(-2px);
-box-shadow:0 10px 20px rgba(0,0,0,.15);
-}
-
-/* =====================
-SECCIONES + ANIMACIÓN SCROLL
-===================== */
-
 section{
 padding:90px 64px;
 background:white;
@@ -219,193 +105,82 @@ opacity:0;
 transform:translateY(40px);
 transition:.9s ease;
 }
+section.visible{opacity:1;transform:translateY(0);}
+.section-title{font-size:30px;margin-bottom:18px;color:var(--blue-dark);}
 
-section.visible{
-opacity:1;
-transform:translateY(0);
-}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px;margin-top:28px;}
+.card{background:#F7F9FB;padding:26px;border-radius:14px;border:1px solid #E2E6EA;text-decoration:none;color:inherit;}
+.card img{width:100%;border-radius:10px;margin-bottom:14px;}
 
-.section-title{
-font-size:30px;
-margin-bottom:18px;
-color:var(--blue-dark);
-}
+.clients{display:flex;flex-wrap:wrap;gap:28px;margin-top:20px;align-items:center;}
+.clients img{height:34px;}
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:26px;
-margin-top:28px;
-}
-
-.card{
-background:#F7F9FB;
-padding:26px;
-border-radius:14px;
-border:1px solid #E2E6EA;
-transition:.25s ease;
-text-decoration:none;
-color:inherit;
-}
-
-.card:hover{
-transform:translateY(-6px);
-box-shadow:0 14px 30px rgba(0,0,0,.08);
-}
-
-.card img{
-width:100%;
-border-radius:10px;
-margin-bottom:14px;
-}
-
-.clients{
-display:flex;
-flex-wrap:wrap;
-gap:28px;
-margin-top:20px;
-align-items:center;
-}
-
-.clients img{
-height:34px;
-filter:grayscale(100%);
-opacity:.7;
-transition:.25s ease;
-}
-
-.clients img:hover{
-filter:none;
-opacity:1;
-}
-
-/* =====================
-FOOTER
-===================== */
-
-footer{
-background:var(--blue-dark);
-color:white;
-text-align:center;
-padding:24px;
-}
-
-/* =====================
-RESPONSIVE
-===================== */
+footer{background:var(--blue-dark);color:white;text-align:center;padding:24px;}
 
 @media(max-width:768px){
-
 .menu-toggle{display:flex;}
 nav{display:none;}
-
-.hero{
-padding:130px 20px 90px;
+.hero{padding:130px 20px 90px;}
+.hero h1{font-size:28px;}
+section{padding:60px 20px;}
 }
-
-.hero h1{
-font-size:28px;
-}
-
-section{
-padding:60px 20px;
-}
-
-}
-
 </style>
 </head>
 
 <body>
 
 <header id="header">
-
 <img src="images/logo.svg" style="height:32px;" alt="FOCS Logo">
 
 <div class="menu-toggle" onclick="toggleMenu()">
-<span></span>
-<span></span>
-<span></span>
+<span></span><span></span><span></span>
 </div>
 
 <nav>
-<a href="#home">Inicio</a>
-<a href="#about">Sobre FOCS</a>
-<a href="#services">Servicios</a>
-<a href="#projects">Proyectos</a>
-<a href="#clients">Clientes</a>
-<a href="#contact">Contacto</a>
-<span class="lang-btn">ES / EN</span>
+<a href="#home" data-i18n="nav_home">Inicio</a>
+<a href="#about" data-i18n="nav_about">Sobre FOCS</a>
+<a href="#services" data-i18n="nav_services">Servicios</a>
+<a href="#projects" data-i18n="nav_projects">Proyectos</a>
+<a href="#clients" data-i18n="nav_clients">Clientes</a>
+<a href="#contact" data-i18n="nav_contact">Contacto</a>
+<span class="lang-btn" onclick="toggleLanguage()">ES / EN</span>
 </nav>
 
 <div id="mobileMenu" class="mobile-menu">
-<a href="#home">Inicio</a>
-<a href="#about">Sobre FOCS</a>
-<a href="#services">Servicios</a>
-<a href="#projects">Proyectos</a>
-<a href="#clients">Clientes</a>
-<a href="#contact">Contacto</a>
+<a href="#home" data-i18n="nav_home">Inicio</a>
+<a href="#about" data-i18n="nav_about">Sobre FOCS</a>
+<a href="#services" data-i18n="nav_services">Servicios</a>
+<a href="#projects" data-i18n="nav_projects">Proyectos</a>
+<a href="#clients" data-i18n="nav_clients">Clientes</a>
+<a href="#contact" data-i18n="nav_contact">Contacto</a>
 </div>
-
 </header>
 
 <section class="hero reveal" id="home">
-<h1>Ingeniería, Construcción y Gestión de Proyectos con Más de 30 Años de Experiencia</h1>
-<p>FOCS es una firma de ingeniería y construcción respaldada por más de 30 años de experiencia en proyectos industriales, comerciales e infraestructura bajo estándares internacionales.</p>
-<a href="#contact" class="cta-btn">Iniciar Proyecto</a>
+<h1 data-i18n="hero_title">Ingeniería, Construcción y Gestión de Proyectos con Más de 30 Años de Experiencia</h1>
+<p data-i18n="hero_text">FOCS es una firma de ingeniería y construcción respaldada por más de 30 años de experiencia en proyectos industriales, comerciales e infraestructura bajo estándares internacionales.</p>
+<a href="#contact" class="cta-btn" data-i18n="hero_btn">Iniciar Proyecto</a>
 </section>
 
 <section id="about" class="reveal">
-<h2 class="section-title">Sobre FOCS</h2>
-<p>FOCS — FO Construction Services es una firma especializada en ingeniería, gestión de proyectos y supervisión técnica internacional.</p>
+<h2 class="section-title" data-i18n="about_title">Sobre FOCS</h2>
+<p data-i18n="about_text">FOCS — FO Construction Services es una firma especializada en ingeniería, gestión de proyectos y supervisión técnica internacional.</p>
 </section>
 
 <section id="services" class="reveal">
-<h2 class="section-title">Servicios</h2>
-<div class="grid">
-<div class="card">Construction Management</div>
-<div class="card">Project Management</div>
-<div class="card">Technical Supervision</div>
-<div class="card">Quality Control</div>
-<div class="card">Cost Control & Budgeting</div>
-<div class="card">Engineering Consulting</div>
-<div class="card">Risk & Safety Management</div>
-<div class="card">Photovoltaic & Energy Solutions</div>
-</div>
+<h2 class="section-title" data-i18n="services_title">Servicios</h2>
 </section>
 
 <section id="projects" class="reveal">
-<h2 class="section-title">Proyectos</h2>
-<div class="grid">
-
-<a href="#" class="card">
-<img src="images/project1.webp">
-<strong>Industrial Facility Expansion</strong>
-<p>Texas, USA — Construction Management</p>
-</a>
-
-<a href="#" class="card">
-<img src="images/project2.webp">
-<strong>Energy Infrastructure Upgrade</strong>
-<p>Mexico — Technical Supervision</p>
-</a>
-
-</div>
+<h2 class="section-title" data-i18n="projects_title">Proyectos</h2>
 </section>
 
 <section id="clients" class="reveal">
-<h2 class="section-title">Clientes</h2>
-<div class="clients">
-<img src="images/client1.svg">
-<img src="images/client2.svg">
-<img src="images/client3.svg">
-<img src="images/client4.svg">
-<img src="images/client5.svg">
-</div>
+<h2 class="section-title" data-i18n="clients_title">Clientes</h2>
 </section>
 
 <section id="contact" class="reveal">
-<h2 class="section-title">Contacto</h2>
+<h2 class="section-title" data-i18n="contact_title">Contacto</h2>
 </section>
 
 <footer>
@@ -414,7 +189,53 @@ padding:60px 20px;
 
 <script>
 
-/* MENU MOBILE */
+let currentLang="es";
+
+const translations={
+en:{
+nav_home:"Home",
+nav_about:"About FOCS",
+nav_services:"Services",
+nav_projects:"Projects",
+nav_clients:"Clients",
+nav_contact:"Contact",
+hero_title:"Engineering, Construction and Project Management with Over 30 Years of Experience",
+hero_text:"FOCS is an engineering and construction firm backed by over 30 years of international project experience.",
+hero_btn:"Start Project",
+about_title:"About FOCS",
+about_text:"FOCS — FO Construction Services is an international engineering and project management firm.",
+services_title:"Services",
+projects_title:"Projects",
+clients_title:"Clients",
+contact_title:"Contact"
+},
+es:{
+nav_home:"Inicio",
+nav_about:"Sobre FOCS",
+nav_services:"Servicios",
+nav_projects:"Proyectos",
+nav_clients:"Clientes",
+nav_contact:"Contacto",
+hero_title:"Ingeniería, Construcción y Gestión de Proyectos con Más de 30 Años de Experiencia",
+hero_text:"FOCS es una firma de ingeniería y construcción respaldada por más de 30 años de experiencia en proyectos industriales, comerciales e infraestructura bajo estándares internacionales.",
+hero_btn:"Iniciar Proyecto",
+about_title:"Sobre FOCS",
+about_text:"FOCS — FO Construction Services es una firma especializada en ingeniería, gestión de proyectos y supervisión técnica internacional.",
+services_title:"Servicios",
+projects_title:"Proyectos",
+clients_title:"Clientes",
+contact_title:"Contacto"
+}
+};
+
+function toggleLanguage(){
+currentLang=currentLang==="es"?"en":"es";
+document.querySelectorAll("[data-i18n]").forEach(el=>{
+const key=el.getAttribute("data-i18n");
+el.textContent=translations[currentLang][key];
+});
+}
+
 function toggleMenu(){
 const menu=document.getElementById("mobileMenu");
 const toggle=document.querySelector(".menu-toggle");
@@ -422,30 +243,18 @@ menu.classList.toggle("active");
 toggle.classList.toggle("active");
 }
 
-document.querySelectorAll(".mobile-menu a").forEach(link=>{
-link.addEventListener("click",()=>{
-document.getElementById("mobileMenu").classList.remove("active");
-document.querySelector(".menu-toggle").classList.remove("active");
-});
-});
-
-/* HEADER SCROLL */
 window.addEventListener("scroll",()=>{
 document.getElementById("header").classList.toggle("scrolled",window.scrollY>60);
 });
 
-/* SCROLL REVEAL ANIMACIÓN SUAVE */
 const observer=new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add("visible");
-}
+if(entry.isIntersecting){entry.target.classList.add("visible");}
 });
 },{threshold:.18});
 
 document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
 
-/* HERO LOAD */
 window.addEventListener("load",()=>{
 document.querySelector(".hero").classList.add("visible");
 });
