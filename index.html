@@ -25,8 +25,16 @@
 --gray-light:#F4F6F8;
 }
 
+html{scroll-behavior:smooth;}
+
 *{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif;}
-body{background:var(--gray-light);font-size:17px;color:#1B1F23;line-height:1.6;}
+
+body{
+background:var(--gray-light);
+font-size:17px;
+color:#1B1F23;
+line-height:1.6;
+}
 
 header{
 position:fixed;
@@ -36,7 +44,7 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:16px 40px;
-background:rgba(11,42,74,.7);
+background:rgba(11,42,74,.8);
 backdrop-filter:blur(10px);
 transition:.3s;
 z-index:1000;
@@ -47,7 +55,7 @@ background:rgba(11,42,74,.95);
 padding:12px 40px;
 }
 
-nav{display:flex;gap:20px;}
+nav{display:flex;gap:20px;align-items:center;}
 
 nav a{
 color:white;
@@ -69,8 +77,16 @@ transition:.3s;
 
 nav a:hover::after{width:100%;}
 
+.lang-btn{
+border:1px solid white;
+padding:4px 10px;
+border-radius:6px;
+cursor:pointer;
+}
+
 .menu-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;}
 .menu-toggle span{width:26px;height:3px;background:white;transition:.3s;}
+
 .menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
 .menu-toggle.active span:nth-child(2){opacity:0;}
 .menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px);}
@@ -83,7 +99,7 @@ background:var(--blue-dark);
 max-height:0;
 overflow:hidden;
 opacity:0;
-transition:.3s;
+transition:.35s;
 }
 
 .mobile-menu.active{max-height:500px;opacity:1;}
@@ -110,9 +126,20 @@ to{opacity:1;transform:translateY(0);}
 .hero h1{font-size:48px;max-width:900px;}
 .hero p{margin-top:18px;max-width:700px;}
 
-.cta-btn{margin-top:30px;background:var(--blue-accent);padding:14px 30px;border-radius:8px;color:white;text-decoration:none;}
+.cta-btn{
+margin-top:30px;
+background:var(--blue-accent);
+padding:14px 30px;
+border-radius:8px;
+color:white;
+text-decoration:none;
+}
 
-section{padding:100px 64px;background:white;}
+section{
+padding:100px 64px;
+background:white;
+scroll-margin-top:90px;
+}
 
 .reveal{opacity:0;transform:translateY(40px);transition:1s;}
 .reveal.active{opacity:1;transform:translateY(0);}
@@ -162,12 +189,13 @@ section{padding:70px 20px;}
 </div>
 
 <nav>
-<a href="#home">Inicio</a>
-<a href="#about">Sobre</a>
-<a href="#services">Servicios</a>
-<a href="#projects">Proyectos</a>
-<a href="#clients">Clientes</a>
-<a href="#contact">Contacto</a>
+<a href="#home" data-es="Inicio" data-en="Home">Inicio</a>
+<a href="#about" data-es="Sobre" data-en="About">Sobre</a>
+<a href="#services" data-es="Servicios" data-en="Services">Servicios</a>
+<a href="#projects" data-es="Proyectos" data-en="Projects">Proyectos</a>
+<a href="#clients" data-es="Clientes" data-en="Clients">Clientes</a>
+<a href="#contact" data-es="Contacto" data-en="Contact">Contacto</a>
+<span class="lang-btn" onclick="toggleLanguage()">ES / EN</span>
 </nav>
 
 <div id="mobileMenu" class="mobile-menu">
@@ -182,61 +210,40 @@ section{padding:70px 20px;}
 </header>
 
 <section class="hero" id="home">
-<h1>Engineering, Construction & Project Management</h1>
-<p>More than 30 years delivering industrial, commercial and infrastructure projects under international standards.</p>
-<a href="#contact" class="cta-btn">Start a Project</a>
+<h1 data-es="Ingeniería, Construcción y Gestión de Proyectos"
+data-en="Engineering, Construction & Project Management">
+Ingeniería
+</h1>
+<p data-es="Más de 30 años de experiencia internacional."
+data-en="More than 30 years of international experience.">
+Experiencia
+</p>
+<a href="#contact" class="cta-btn"
+data-es="Iniciar Proyecto"
+data-en="Start a Project">
+Iniciar Proyecto
+</a>
 </section>
 
-<section id="about" class="reveal">
-<h2>About FOCS</h2>
-<p>International engineering, construction management and technical supervision firm.</p>
-</section>
+<section id="about" class="reveal"><h2>About FOCS</h2></section>
+<section id="services" class="reveal"><h2>Services</h2></section>
+<section id="projects" class="reveal"><h2>Projects</h2></section>
+<section id="clients" class="reveal"><h2>Clients</h2></section>
+<section id="contact" class="reveal"><h2>Contact</h2></section>
 
-<section id="services" class="reveal">
-<h2>Services</h2>
-<div class="grid">
-<div class="card">Construction Management</div>
-<div class="card">Project Management</div>
-<div class="card">Technical Supervision</div>
-<div class="card">Engineering Consulting</div>
-</div>
-</section>
-
-<section id="projects" class="reveal">
-<h2>Projects</h2>
-<div class="grid">
-<div class="card">
-<img src="images/project1.webp">
-<strong>Industrial Facility Expansion</strong>
-<p>USA — Construction Management</p>
-</div>
-<div class="card">
-<img src="images/project2.webp">
-<strong>Energy Infrastructure</strong>
-<p>Mexico — Technical Supervision</p>
-</div>
-</div>
-</section>
-
-<section id="clients" class="reveal">
-<h2>Clients</h2>
-<div class="clients">
-<img src="images/client1.webp">
-<img src="images/client2.webp">
-<img src="images/client3.webp">
-<img src="images/client4.webp">
-</div>
-</section>
-
-<section id="contact" class="reveal">
-<h2>Contact</h2>
-</section>
-
-<footer>
-<p>© 2026 FOCS — FO Construction Services</p>
-</footer>
+<footer><p>© 2026 FOCS — FO Construction Services</p></footer>
 
 <script>
+
+let currentLang="es";
+
+function toggleLanguage(){
+currentLang=currentLang==="es"?"en":"es";
+document.documentElement.lang=currentLang;
+document.querySelectorAll("[data-es]").forEach(el=>{
+el.textContent=el.getAttribute("data-"+currentLang);
+});
+}
 
 function toggleMenu(){
 document.getElementById("mobileMenu").classList.toggle("active");
