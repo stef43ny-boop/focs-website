@@ -20,10 +20,6 @@
 
 <style>
 
-/* =====================
-RESET (CORRECCIÓN LÍNEA BLANCA)
-===================== */
-
 html,body{
 margin:0;
 padding:0;
@@ -49,10 +45,6 @@ line-height:1.65;
 font-size:17px;
 color:var(--text-dark);
 }
-
-/* =====================
-HEADER
-===================== */
 
 header{
 background:rgba(11,42,74,.95);
@@ -96,17 +88,6 @@ transition:.25s ease;
 }
 
 nav a:hover::after{width:100%;}
-
-.lang-btn{
-cursor:pointer;
-border:1px solid white;
-padding:4px 10px;
-border-radius:6px;
-}
-
-/* =====================
-MENU MOBILE
-===================== */
 
 .menu-toggle{
 display:none;
@@ -163,10 +144,6 @@ opacity:1;
 transform:translateY(0);
 }
 
-/* =====================
-HERO (SIN ESPACIO SUPERIOR)
-===================== */
-
 .hero{
 padding:160px 64px 120px;
 background:linear-gradient(rgba(11,42,74,.9),rgba(11,42,74,.9)),url('images/hero.webp') center/cover no-repeat;
@@ -207,10 +184,6 @@ transition:.25s ease;
 transform:translateY(-2px);
 box-shadow:0 10px 20px rgba(0,0,0,.15);
 }
-
-/* =====================
-SECCIONES + ANIMACIÓN SCROLL
-===================== */
 
 section{
 padding:90px 64px;
@@ -279,20 +252,12 @@ filter:none;
 opacity:1;
 }
 
-/* =====================
-FOOTER
-===================== */
-
 footer{
 background:var(--blue-dark);
 color:white;
 text-align:center;
 padding:24px;
 }
-
-/* =====================
-RESPONSIVE
-===================== */
 
 @media(max-width:768px){
 
@@ -335,7 +300,6 @@ padding:60px 20px;
 <a href="#projects">Proyectos</a>
 <a href="#clients">Clientes</a>
 <a href="#contact">Contacto</a>
-<span class="lang-btn">ES / EN</span>
 </nav>
 
 <div id="mobileMenu" class="mobile-menu">
@@ -414,7 +378,6 @@ padding:60px 20px;
 
 <script>
 
-/* MENU MOBILE */
 function toggleMenu(){
 const menu=document.getElementById("mobileMenu");
 const toggle=document.querySelector(".menu-toggle");
@@ -429,12 +392,10 @@ document.querySelector(".menu-toggle").classList.remove("active");
 });
 });
 
-/* HEADER SCROLL */
 window.addEventListener("scroll",()=>{
 document.getElementById("header").classList.toggle("scrolled",window.scrollY>60);
 });
 
-/* SCROLL REVEAL ANIMACIÓN SUAVE */
 const observer=new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
 if(entry.isIntersecting){
@@ -445,7 +406,6 @@ entry.target.classList.add("visible");
 
 document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
 
-/* HERO LOAD */
 window.addEventListener("load",()=>{
 document.querySelector(".hero").classList.add("visible");
 });
@@ -454,3 +414,4 @@ document.querySelector(".hero").classList.add("visible");
 
 </body>
 </html>
+
