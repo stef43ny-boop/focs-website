@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* RESET */
+        /* RESET & BASICS */
         html, body { margin: 0; padding: 0; }
         :root {
             --blue-dark: #0B2A4A;
@@ -76,17 +76,17 @@
             background: var(--blue-dark);
         }
         .mobile-menu a { display: block; padding: 16px 24px; border-top: 1px solid rgba(255, 255, 255, .1); color: white; text-decoration: none; }
-        .mobile-menu.active { max-height: 700px; opacity: 1; transform: translateY(0); }
+        .mobile-menu.active { max-height: 800px; opacity: 1; transform: translateY(0); }
 
         /* HERO */
         .hero {
             padding: 160px 64px 120px;
-            background: linear-gradient(rgba(11, 42, 74, .9), rgba(11, 42, 74, .9)), url('images/hero.webp') center/cover no-repeat;
+            background: linear-gradient(rgba(11, 42, 74, .85), rgba(11, 42, 74, .85)), url('images/hero.webp') center/cover no-repeat;
             color: white; opacity: 0; transform: translateY(20px); transition: 1s ease;
         }
         .hero.visible { opacity: 1; transform: translateY(0); }
-        .hero h1 { font-size: 46px; max-width: 900px; }
-        .hero p { margin-top: 18px; max-width: 760px; }
+        .hero h1 { font-size: 46px; max-width: 900px; margin: 0; }
+        .hero p { margin-top: 18px; max-width: 760px; font-size: 1.1rem; }
 
         .cta-btn {
             display: inline-block; margin-top: 30px; padding: 14px 32px;
@@ -95,21 +95,28 @@
         }
         .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0, 0, 0, .15); }
 
-        /* SECCIONES */
+        /* SECCIONES GENERAL */
         section { padding: 90px 64px; background: white; opacity: 0; transform: translateY(40px); transition: .9s ease; }
         section.visible { opacity: 1; transform: translateY(0); }
-        .section-title { font-size: 30px; margin-bottom: 18px; color: var(--blue-dark); }
+        .section-title { font-size: 32px; margin-bottom: 24px; color: var(--blue-dark); font-weight: 700; }
 
+        /* GRID SISTEMA */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 26px; margin-top: 28px; }
         .card { background: #F7F9FB; padding: 26px; border-radius: 14px; border: 1px solid #E2E6EA; transition: .25s ease; text-decoration: none; color: inherit; }
-        .card:hover { transform: translateY(-6px); box-shadow: 0 14px 30px rgba(0, 0, 0, .08); }
-        .card img { width: 100%; border-radius: 10px; margin-bottom: 14px; }
+        .card:hover { transform: translateY(-6px); box-shadow: 0 14px 30px rgba(0, 0, 0, .08); border-color: var(--blue-accent); }
 
-        .clients { display: flex; flex-wrap: wrap; gap: 28px; margin-top: 20px; align-items: center; }
-        .clients img { height: 34px; filter: grayscale(100%); opacity: .7; transition: .25s ease; }
-        .clients img:hover { filter: none; opacity: 1; }
+        /* CLIENTS STYLING */
+        .clients-grid {
+            display: flex; flex-wrap: wrap; gap: 40px; margin-top: 40px;
+            align-items: center; justify-content: center;
+        }
+        .client-item {
+            font-weight: 700; font-size: 22px; color: var(--blue-dark);
+            opacity: 0.5; transition: 0.3s ease; cursor: default;
+        }
+        .client-item:hover { opacity: 1; transform: scale(1.1); }
 
-        footer { background: var(--blue-dark); color: white; text-align: center; padding: 24px; }
+        footer { background: var(--blue-dark); color: white; text-align: center; padding: 40px 24px; }
 
         @media(max-width: 768px){
             .menu-toggle { display: flex; }
@@ -160,6 +167,9 @@
 <section id="about" class="reveal">
     <h2 class="section-title" id="aboutTitle">Sobre FOCS</h2>
     <p id="aboutDesc">FOCS — FO Construction Services es una firma especializada en ingeniería, gestión de proyectos y supervisión técnica internacional.</p>
+    
+    <img src="images/focs-team.jpg" id="aboutImg" alt="Nuestro equipo de FOCS" 
+         style="width: 100%; max-width: 900px; border-radius: 12px; margin-top: 30px; display: block; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
 </section>
 
 <section id="services" class="reveal">
@@ -180,12 +190,12 @@
     <h2 class="section-title" id="projectsTitle">Proyectos</h2>
     <div class="grid" id="projectsGrid">
         <a href="#" class="card">
-            <img src="images/project1.webp" alt="Project 1">
+            <img src="images/project1.webp" alt="Project 1" style="width:100%; border-radius:8px; margin-bottom:15px;">
             <strong class="proj-name">Expansión de Planta Industrial</strong>
             <p class="proj-desc">Texas, EE. UU. — Gestión de Construcción</p>
         </a>
         <a href="#" class="card">
-            <img src="images/project2.webp" alt="Project 2">
+            <img src="images/project2.webp" alt="Project 2" style="width:100%; border-radius:8px; margin-bottom:15px;">
             <strong class="proj-name">Mejora de Infraestructura Energética</strong>
             <p class="proj-desc">México — Supervisión Técnica</p>
         </a>
@@ -194,17 +204,19 @@
 
 <section id="clients" class="reveal">
     <h2 class="section-title" id="clientsTitle">Clientes</h2>
-    <div class="clients">
-        <img src="images/client1.svg" alt="Client">
-        <img src="images/client2.svg" alt="Client">
-        <img src="images/client3.svg" alt="Client">
-        <img src="images/client4.svg" alt="Client">
-        <img src="images/client5.svg" alt="Client">
+    <div class="clients-grid">
+        <div class="client-item">Cimsa</div>
+        <div class="client-item">Holtec</div>
+        <div class="client-item">SPG</div>
+        <div class="client-item">SPIG</div>
+        <div class="client-item">Thyssen Krupp</div>
+        <div class="client-item">GEA cooling</div>
     </div>
 </section>
 
 <section id="contact" class="reveal">
     <h2 class="section-title" id="contactTitle">Contacto</h2>
+    <p>¿Listo para trabajar con nosotros? Contáctanos para discutir tu próximo proyecto.</p>
 </section>
 
 <footer>
@@ -212,6 +224,7 @@
 </footer>
 
 <script>
+/* --- TRADUCCIONES --- */
 const translations = {
     es: {
         nav: ["Inicio", "Sobre FOCS", "Servicios", "Proyectos", "Clientes", "Contacto"],
@@ -221,6 +234,7 @@ const translations = {
         heroBtn: "Iniciar Proyecto",
         aboutTitle: "Sobre FOCS",
         aboutDesc: "FOCS — FO Construction Services es una firma especializada en ingeniería, gestión de proyectos y supervisión técnica internacional.",
+        aboutImgAlt: "Nuestro equipo de FOCS",
         servicesTitle: "Servicios",
         servicesList: [
             "Gestión de Construcción", "Gestión de Proyectos", "Supervisión Técnica", 
@@ -244,6 +258,7 @@ const translations = {
         heroBtn: "Start Project",
         aboutTitle: "About FOCS",
         aboutDesc: "FOCS — FO Construction Services is a firm specialized in engineering, project management, and international technical supervision.",
+        aboutImgAlt: "Our FOCS team",
         servicesTitle: "Services",
         servicesList: [
             "Construction Management", "Project Management", "Technical Supervision", 
@@ -278,19 +293,18 @@ function toggleLanguage() {
     document.getElementById("heroDesc").innerText = lang.heroDesc;
     document.getElementById("heroBtn").innerText = lang.heroBtn;
 
-    // Secciones
+    // About
     document.getElementById("aboutTitle").innerText = lang.aboutTitle;
     document.getElementById("aboutDesc").innerText = lang.aboutDesc;
-    document.getElementById("servicesTitle").innerText = lang.servicesTitle;
-    document.getElementById("projectsTitle").innerText = lang.projectsTitle;
-    document.getElementById("clientsTitle").innerText = lang.clientsTitle;
-    document.getElementById("contactTitle").innerText = lang.contactTitle;
+    document.getElementById("aboutImg").alt = lang.aboutImgAlt;
 
-    // Servicios (Grid)
+    // Servicios
+    document.getElementById("servicesTitle").innerText = lang.servicesTitle;
     const serviceCards = document.querySelectorAll("#servicesGrid .card");
     serviceCards.forEach((card, i) => card.innerText = lang.servicesList[i]);
 
-    // Proyectos (Nombres y descripciones)
+    // Proyectos
+    document.getElementById("projectsTitle").innerText = lang.projectsTitle;
     const projectNames = document.querySelectorAll(".proj-name");
     const projectDescs = document.querySelectorAll(".proj-desc");
     lang.projectItems.forEach((item, i) => {
@@ -298,7 +312,11 @@ function toggleLanguage() {
         projectDescs[i].innerText = item.desc;
     });
 
-    // Botones de idioma
+    // Otros
+    document.getElementById("clientsTitle").innerText = lang.clientsTitle;
+    document.getElementById("contactTitle").innerText = lang.contactTitle;
+
+    // Botones
     document.getElementById("langBtn").innerText = lang.langBtn;
     document.getElementById("mobileLangLabel").innerText = lang.mobileLang;
 }
@@ -321,7 +339,7 @@ const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if(entry.isIntersecting) entry.target.classList.add("visible");
     });
-}, { threshold: .18 });
+}, { threshold: .1 });
 document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
 /* HERO LOAD */
