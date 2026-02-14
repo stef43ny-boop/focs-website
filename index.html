@@ -76,7 +76,7 @@
             background: var(--blue-dark);
         }
         .mobile-menu a { display: block; padding: 16px 24px; border-top: 1px solid rgba(255, 255, 255, .1); color: white; text-decoration: none; }
-        .mobile-menu.active { max-height: 600px; opacity: 1; transform: translateY(0); }
+        .mobile-menu.active { max-height: 700px; opacity: 1; transform: translateY(0); }
 
         /* HERO */
         .hero {
@@ -147,7 +147,7 @@
         <a href="#projects">Proyectos</a>
         <a href="#clients">Clientes</a>
         <a href="#contact">Contacto</a>
-        <a href="#" onclick="toggleLanguage(); return false;" style="color: var(--blue-accent); font-weight: bold;">Cambiar Idioma (EN)</a>
+        <a href="#" onclick="toggleLanguage(); return false;" style="color: var(--blue-accent); font-weight: bold;" id="mobileLangLabel">Cambiar a EN</a>
     </div>
 </header>
 
@@ -164,30 +164,30 @@
 
 <section id="services" class="reveal">
     <h2 class="section-title" id="servicesTitle">Servicios</h2>
-    <div class="grid">
-        <div class="card">Construction Management</div>
-        <div class="card">Project Management</div>
-        <div class="card">Technical Supervision</div>
-        <div class="card">Quality Control</div>
-        <div class="card">Cost Control & Budgeting</div>
-        <div class="card">Engineering Consulting</div>
-        <div class="card">Risk & Safety Management</div>
-        <div class="card">Photovoltaic & Energy Solutions</div>
+    <div class="grid" id="servicesGrid">
+        <div class="card">Gestión de Construcción</div>
+        <div class="card">Gestión de Proyectos</div>
+        <div class="card">Supervisión Técnica</div>
+        <div class="card">Control de Calidad</div>
+        <div class="card">Control de Costos y Presupuestos</div>
+        <div class="card">Consultoría de Ingeniería</div>
+        <div class="card">Gestión de Riesgos y Seguridad</div>
+        <div class="card">Soluciones Fotovoltaicas y Energéticas</div>
     </div>
 </section>
 
 <section id="projects" class="reveal">
     <h2 class="section-title" id="projectsTitle">Proyectos</h2>
-    <div class="grid">
+    <div class="grid" id="projectsGrid">
         <a href="#" class="card">
             <img src="images/project1.webp" alt="Project 1">
-            <strong>Industrial Facility Expansion</strong>
-            <p>Texas, USA — Construction Management</p>
+            <strong class="proj-name">Expansión de Planta Industrial</strong>
+            <p class="proj-desc">Texas, EE. UU. — Gestión de Construcción</p>
         </a>
         <a href="#" class="card">
             <img src="images/project2.webp" alt="Project 2">
-            <strong>Energy Infrastructure Upgrade</strong>
-            <p>Mexico — Technical Supervision</p>
+            <strong class="proj-name">Mejora de Infraestructura Energética</strong>
+            <p class="proj-desc">México — Supervisión Técnica</p>
         </a>
     </div>
 </section>
@@ -208,34 +208,53 @@
 </section>
 
 <footer>
-    <p>© 2026 FOCS — FO Construction Services</p>
+    <p id="footerText">© 2026 FOCS — FO Construction Services</p>
 </footer>
 
 <script>
-/* --- TRADUCCIONES --- */
 const translations = {
     es: {
         nav: ["Inicio", "Sobre FOCS", "Servicios", "Proyectos", "Clientes", "Contacto"],
+        mobileLang: "Cambiar a EN",
         heroTitle: "Ingeniería, Construcción y Gestión de Proyectos con Más de 30 Años de Experiencia",
         heroDesc: "FOCS es una firma de ingeniería y construcción respaldada por más de 30 años de experiencia en proyectos industriales, comerciales e infraestructura bajo estándares internacionales.",
         heroBtn: "Iniciar Proyecto",
         aboutTitle: "Sobre FOCS",
         aboutDesc: "FOCS — FO Construction Services es una firma especializada en ingeniería, gestión de proyectos y supervisión técnica internacional.",
         servicesTitle: "Servicios",
+        servicesList: [
+            "Gestión de Construcción", "Gestión de Proyectos", "Supervisión Técnica", 
+            "Control de Calidad", "Control de Costos y Presupuestos", 
+            "Consultoría de Ingeniería", "Gestión de Riesgos y Seguridad", "Soluciones Fotovoltaicas y Energéticas"
+        ],
         projectsTitle: "Proyectos",
+        projectItems: [
+            { name: "Expansión de Planta Industrial", desc: "Texas, EE. UU. — Gestión de Construcción" },
+            { name: "Mejora de Infraestructura Energética", desc: "México — Supervisión Técnica" }
+        ],
         clientsTitle: "Clientes",
         contactTitle: "Contacto",
         langBtn: "ES / EN"
     },
     en: {
         nav: ["Home", "About FOCS", "Services", "Projects", "Clients", "Contact"],
+        mobileLang: "Switch to ES",
         heroTitle: "Engineering, Construction and Project Management with Over 30 Years of Experience",
         heroDesc: "FOCS is an engineering and construction firm backed by over 30 years of experience in industrial, commercial, and infrastructure projects under international standards.",
         heroBtn: "Start Project",
         aboutTitle: "About FOCS",
         aboutDesc: "FOCS — FO Construction Services is a firm specialized in engineering, project management, and international technical supervision.",
         servicesTitle: "Services",
+        servicesList: [
+            "Construction Management", "Project Management", "Technical Supervision", 
+            "Quality Control", "Cost Control & Budgeting", 
+            "Engineering Consulting", "Risk & Safety Management", "Photovoltaic & Energy Solutions"
+        ],
         projectsTitle: "Projects",
+        projectItems: [
+            { name: "Industrial Facility Expansion", desc: "Texas, USA — Construction Management" },
+            { name: "Energy Infrastructure Upgrade", desc: "Mexico — Technical Supervision" }
+        ],
         clientsTitle: "Clients",
         contactTitle: "Contact",
         langBtn: "EN / ES"
@@ -248,19 +267,18 @@ function toggleLanguage() {
     currentLang = currentLang === 'es' ? 'en' : 'es';
     const lang = translations[currentLang];
 
-    // Navegación (Escritorio y Móvil)
+    // Navegación
     const navLinks = document.querySelectorAll("nav a, .mobile-menu a:not(:last-child)");
-    const navLength = lang.nav.length;
     navLinks.forEach((link, index) => {
-        link.innerText = lang.nav[index % navLength];
+        link.innerText = lang.nav[index % 6];
     });
 
-    // Hero Section
+    // Hero
     document.getElementById("heroTitle").innerText = lang.heroTitle;
     document.getElementById("heroDesc").innerText = lang.heroDesc;
     document.getElementById("heroBtn").innerText = lang.heroBtn;
 
-    // Otras secciones
+    // Secciones
     document.getElementById("aboutTitle").innerText = lang.aboutTitle;
     document.getElementById("aboutDesc").innerText = lang.aboutDesc;
     document.getElementById("servicesTitle").innerText = lang.servicesTitle;
@@ -268,11 +286,24 @@ function toggleLanguage() {
     document.getElementById("clientsTitle").innerText = lang.clientsTitle;
     document.getElementById("contactTitle").innerText = lang.contactTitle;
 
-    // Botón de idioma
+    // Servicios (Grid)
+    const serviceCards = document.querySelectorAll("#servicesGrid .card");
+    serviceCards.forEach((card, i) => card.innerText = lang.servicesList[i]);
+
+    // Proyectos (Nombres y descripciones)
+    const projectNames = document.querySelectorAll(".proj-name");
+    const projectDescs = document.querySelectorAll(".proj-desc");
+    lang.projectItems.forEach((item, i) => {
+        projectNames[i].innerText = item.name;
+        projectDescs[i].innerText = item.desc;
+    });
+
+    // Botones de idioma
     document.getElementById("langBtn").innerText = lang.langBtn;
+    document.getElementById("mobileLangLabel").innerText = lang.mobileLang;
 }
 
-/* --- MENÚ MOBILE --- */
+/* MENÚ MOBILE */
 function toggleMenu(){
     const menu = document.getElementById("mobileMenu");
     const toggle = document.querySelector(".menu-toggle");
@@ -280,28 +311,20 @@ function toggleMenu(){
     toggle.classList.toggle("active");
 }
 
-document.querySelectorAll(".mobile-menu a").forEach(link => {
-    link.addEventListener("click", () => {
-        document.getElementById("mobileMenu").classList.remove("active");
-        document.querySelector(".menu-toggle").classList.remove("active");
-    });
-});
-
-/* --- HEADER SCROLL --- */
+/* HEADER SCROLL */
 window.addEventListener("scroll", () => {
     document.getElementById("header").classList.toggle("scrolled", window.scrollY > 60);
 });
 
-/* --- SCROLL REVEAL --- */
+/* SCROLL REVEAL */
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if(entry.isIntersecting) entry.target.classList.add("visible");
     });
 }, { threshold: .18 });
-
 document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
-/* --- HERO LOAD --- */
+/* HERO LOAD */
 window.addEventListener("load", () => {
     document.querySelector(".hero").classList.add("visible");
 });
