@@ -111,7 +111,7 @@
             align-items: center; justify-content: center;
         }
         .clients-grid img {
-            height: 50px; /* Ajusta la altura de los logos */
+            height: 50px;
             width: auto;
             filter: grayscale(100%);
             opacity: 0.6;
@@ -131,7 +131,7 @@
             .hero { padding: 130px 20px 90px; }
             .hero h1 { font-size: 28px; }
             section { padding: 60px 20px; }
-            .clients-grid img { height: 35px; } /* Logos un poco más pequeños en móvil */
+            .clients-grid img { height: 35px; }
         }
     </style>
 </head>
@@ -216,9 +216,10 @@
         <img src="images/Cimsa logo.png" alt="CIMSA">
         <img src="images/Holtec logo.png" alt="HOLTEC">
         <img src="images/SPIG_logo.png" alt="SPIG">
+        <img src="images/SPG logo.jpg" alt="SPG">
         <img src="images/Thyssen logo.png" alt="Thyssen Krupp">
         <img src="images/Gea logo.jpg" alt="GEA">
-        </div>
+    </div>
 </section>
 
 <section id="contact" class="reveal">
@@ -321,7 +322,6 @@ function toggleLanguage() {
     document.getElementById("mobileLangLabel").innerText = lang.mobileLang;
 }
 
-/* MENÚ MOBILE */
 function toggleMenu(){
     const menu = document.getElementById("mobileMenu");
     const toggle = document.querySelector(".menu-toggle");
@@ -329,12 +329,10 @@ function toggleMenu(){
     toggle.classList.toggle("active");
 }
 
-/* HEADER SCROLL */
 window.addEventListener("scroll", () => {
     document.getElementById("header").classList.toggle("scrolled", window.scrollY > 60);
 });
 
-/* SCROLL REVEAL */
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if(entry.isIntersecting) entry.target.classList.add("visible");
@@ -342,7 +340,6 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: .1 });
 document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
-/* HERO LOAD */
 window.addEventListener("load", () => {
     document.querySelector(".hero").classList.add("visible");
 });
