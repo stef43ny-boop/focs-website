@@ -105,16 +105,23 @@
         .card { background: #F7F9FB; padding: 26px; border-radius: 14px; border: 1px solid #E2E6EA; transition: .25s ease; text-decoration: none; color: inherit; }
         .card:hover { transform: translateY(-6px); box-shadow: 0 14px 30px rgba(0, 0, 0, .08); border-color: var(--blue-accent); }
 
-        /* CLIENTS STYLING */
+        /* CLIENTS LOGOS STYLING */
         .clients-grid {
             display: flex; flex-wrap: wrap; gap: 40px; margin-top: 40px;
             align-items: center; justify-content: center;
         }
-        .client-item {
-            font-weight: 700; font-size: 22px; color: var(--blue-dark);
-            opacity: 0.5; transition: 0.3s ease; cursor: default;
+        .clients-grid img {
+            height: 50px; /* Ajusta la altura de los logos */
+            width: auto;
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: 0.3s ease;
         }
-        .client-item:hover { opacity: 1; transform: scale(1.1); }
+        .clients-grid img:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.1);
+        }
 
         footer { background: var(--blue-dark); color: white; text-align: center; padding: 40px 24px; }
 
@@ -124,6 +131,7 @@
             .hero { padding: 130px 20px 90px; }
             .hero h1 { font-size: 28px; }
             section { padding: 60px 20px; }
+            .clients-grid img { height: 35px; } /* Logos un poco más pequeños en móvil */
         }
     </style>
 </head>
@@ -205,13 +213,12 @@
 <section id="clients" class="reveal">
     <h2 class="section-title" id="clientsTitle">Clientes</h2>
     <div class="clients-grid">
-        <div class="client-item">Cimsa</div>
-        <div class="client-item">Holtec</div>
-        <div class="client-item">SPG</div>
-        <div class="client-item">SPIG</div>
-        <div class="client-item">Thyssen Krupp</div>
-        <div class="client-item">GEA cooling</div>
-    </div>
+        <img src="images/Cimsa logo.png" alt="CIMSA">
+        <img src="images/Holtec logo.png" alt="HOLTEC">
+        <img src="images/SPIG_logo.png" alt="SPIG">
+        <img src="images/Thyssen logo.png" alt="Thyssen Krupp">
+        <img src="images/Gea logo.jpg" alt="GEA">
+        </div>
 </section>
 
 <section id="contact" class="reveal">
@@ -282,28 +289,23 @@ function toggleLanguage() {
     currentLang = currentLang === 'es' ? 'en' : 'es';
     const lang = translations[currentLang];
 
-    // Navegación
     const navLinks = document.querySelectorAll("nav a, .mobile-menu a:not(:last-child)");
     navLinks.forEach((link, index) => {
         link.innerText = lang.nav[index % 6];
     });
 
-    // Hero
     document.getElementById("heroTitle").innerText = lang.heroTitle;
     document.getElementById("heroDesc").innerText = lang.heroDesc;
     document.getElementById("heroBtn").innerText = lang.heroBtn;
 
-    // About
     document.getElementById("aboutTitle").innerText = lang.aboutTitle;
     document.getElementById("aboutDesc").innerText = lang.aboutDesc;
     document.getElementById("aboutImg").alt = lang.aboutImgAlt;
 
-    // Servicios
     document.getElementById("servicesTitle").innerText = lang.servicesTitle;
     const serviceCards = document.querySelectorAll("#servicesGrid .card");
     serviceCards.forEach((card, i) => card.innerText = lang.servicesList[i]);
 
-    // Proyectos
     document.getElementById("projectsTitle").innerText = lang.projectsTitle;
     const projectNames = document.querySelectorAll(".proj-name");
     const projectDescs = document.querySelectorAll(".proj-desc");
@@ -312,11 +314,9 @@ function toggleLanguage() {
         projectDescs[i].innerText = item.desc;
     });
 
-    // Otros
     document.getElementById("clientsTitle").innerText = lang.clientsTitle;
     document.getElementById("contactTitle").innerText = lang.contactTitle;
 
-    // Botones
     document.getElementById("langBtn").innerText = lang.langBtn;
     document.getElementById("mobileLangLabel").innerText = lang.mobileLang;
 }
