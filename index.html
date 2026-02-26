@@ -78,7 +78,7 @@
         .mobile-menu a { display: block; padding: 16px 24px; border-top: 1px solid rgba(255, 255, 255, .1); color: white; text-decoration: none; }
         .mobile-menu.active { max-height: 800px; opacity: 1; transform: translateY(0); }
 
-        /* HERO - NOMBRE ACTUALIZADO A aereocondensador.jpg */
+        /* HERO */
         .hero {
             padding: 180px 64px 140px;
             background: 
@@ -120,6 +120,12 @@
             display: flex; flex-wrap: wrap; gap: 40px; margin-top: 40px;
             align-items: center; justify-content: center;
         }
+        .clients-grid a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s ease;
+        }
         .clients-grid img {
             height: 50px;
             width: auto;
@@ -127,7 +133,7 @@
             opacity: 0.6;
             transition: 0.3s ease;
         }
-        .clients-grid img:hover {
+        .clients-grid a:hover img {
             filter: grayscale(0%);
             opacity: 1;
             transform: scale(1.1);
@@ -159,8 +165,7 @@
         <a href="#home">Inicio</a>
         <a href="#about">Sobre FOCS</a>
         <a href="#services">Servicios</a>
-        <a href="#projects">Proyectos</a>
-        <a href="#clients">Clientes</a>
+        <a href="#clients">Clientes / Proyectos</a>
         <a href="#contact">Contacto</a>
         <span class="lang-btn" id="langBtn" onclick="toggleLanguage()">ES / EN</span>
     </nav>
@@ -169,8 +174,7 @@
         <a href="#home">Inicio</a>
         <a href="#about">Sobre FOCS</a>
         <a href="#services">Servicios</a>
-        <a href="#projects">Proyectos</a>
-        <a href="#clients">Clientes</a>
+        <a href="#clients">Clientes / Proyectos</a>
         <a href="#contact">Contacto</a>
         <a href="#" onclick="toggleLanguage(); return false;" style="color: var(--blue-accent); font-weight: bold;" id="mobileLangLabel">Cambiar a EN</a>
     </div>
@@ -204,31 +208,15 @@
     </div>
 </section>
 
-<section id="projects" class="reveal">
-    <h2 class="section-title" id="projectsTitle">Proyectos</h2>
-    <div class="grid" id="projectsGrid">
-        <a href="#" class="card">
-            <img src="images/project1.webp" alt="Project 1" style="width:100%; border-radius:8px; margin-bottom:15px;">
-            <strong class="proj-name">Expansión de Planta Industrial</strong>
-            <p class="proj-desc">Texas, EE. UU. — Gestión de Construcción</p>
-        </a>
-        <a href="#" class="card">
-            <img src="images/project2.webp" alt="Project 2" style="width:100%; border-radius:8px; margin-bottom:15px;">
-            <strong class="proj-name">Mejora de Infraestructura Energética</strong>
-            <p class="proj-desc">México — Supervisión Técnica</p>
-        </a>
-    </div>
-</section>
-
 <section id="clients" class="reveal">
-    <h2 class="section-title" id="clientsTitle">Clientes</h2>
+    <h2 class="section-title" id="clientsTitle">Clientes / Proyectos</h2>
     <div class="clients-grid">
-        <img src="images/Cimsa logo.png" alt="CIMSA">
-        <img src="images/Holtec logo.png" alt="HOLTEC">
-        <img src="images/SPIG_logo.png" alt="SPIG">
-        <img src="images/SPG o.png" alt="SPG">
-        <img src="images/Thyssen logo.png" alt="Thyssen Krupp">
-        <img src="images/Gea logo.jpg" alt="GEA">
+        <a href="proyecto-cimsa.html"><img src="images/Cimsa logo.png" alt="CIMSA"></a>
+        <a href="proyecto-holtec.html"><img src="images/Holtec logo.png" alt="HOLTEC"></a>
+        <a href="proyecto-spig.html"><img src="images/SPIG_logo.png" alt="SPIG"></a>
+        <a href="proyecto-spg.html"><img src="images/SPG o.png" alt="SPG"></a>
+        <a href="proyecto-thyssen.html"><img src="images/Thyssen logo.png" alt="Thyssen Krupp"></a>
+        <a href="proyecto-gea.html"><img src="images/Gea logo.jpg" alt="GEA"></a>
     </div>
 </section>
 
@@ -242,10 +230,10 @@
 </footer>
 
 <script>
-/* --- TRADUCCIONES --- */
+/* --- TRADUCCIONES ACTUALIZADAS --- */
 const translations = {
     es: {
-        nav: ["Inicio", "Sobre FOCS", "Servicios", "Proyectos", "Clientes", "Contacto"],
+        nav: ["Inicio", "Sobre FOCS", "Servicios", "Clientes / Proyectos", "Contacto"],
         mobileLang: "Cambiar a EN",
         heroTitle: "Ingeniería, Construcción y Gestión de Proyectos con Más de 30 Años de Experiencia",
         heroDesc: "FOCS es una firma de ingeniería y construcción respaldada por más de 30 años de experiencia en proyectos industriales, comerciales e infraestructura bajo estándares internacionales.",
@@ -259,17 +247,12 @@ const translations = {
             "Control de Calidad", "Control de Costos y Presupuestos", 
             "Consultoría de Ingeniería", "Gestión de Riesgos y Seguridad", "Soluciones Fotovoltaicas y Energéticas"
         ],
-        projectsTitle: "Proyectos",
-        projectItems: [
-            { name: "Expansión de Planta Industrial", desc: "Texas, EE. UU. — Gestión de Construcción" },
-            { name: "Mejora de Infraestructura Energética", desc: "México — Supervisión Técnica" }
-        ],
-        clientsTitle: "Clientes",
+        clientsTitle: "Clientes / Proyectos",
         contactTitle: "Contacto",
         langBtn: "ES / EN"
     },
     en: {
-        nav: ["Home", "About FOCS", "Services", "Projects", "Clients", "Contact"],
+        nav: ["Home", "About FOCS", "Services", "Clients / Projects", "Contact"],
         mobileLang: "Switch to ES",
         heroTitle: "Engineering, Construction and Project Management with Over 30 Years of Experience",
         heroDesc: "FOCS is an engineering and construction firm backed by over 30 years of experience in industrial, commercial, and infrastructure projects under international standards.",
@@ -283,12 +266,7 @@ const translations = {
             "Quality Control", "Cost Control & Budgeting", 
             "Engineering Consulting", "Risk & Safety Management", "Photovoltaic & Energy Solutions"
         ],
-        projectsTitle: "Projects",
-        projectItems: [
-            { name: "Industrial Facility Expansion", desc: "Texas, USA — Construction Management" },
-            { name: "Energy Infrastructure Upgrade", desc: "Mexico — Technical Supervision" }
-        ],
-        clientsTitle: "Clients",
+        clientsTitle: "Clients / Projects",
         contactTitle: "Contact",
         langBtn: "EN / ES"
     }
@@ -302,7 +280,7 @@ function toggleLanguage() {
 
     const navLinks = document.querySelectorAll("nav a, .mobile-menu a:not(:last-child)");
     navLinks.forEach((link, index) => {
-        link.innerText = lang.nav[index % 6];
+        link.innerText = lang.nav[index % 5]; // Ajustado a 5 items ahora
     });
 
     document.getElementById("heroTitle").innerText = lang.heroTitle;
@@ -316,14 +294,6 @@ function toggleLanguage() {
     document.getElementById("servicesTitle").innerText = lang.servicesTitle;
     const serviceCards = document.querySelectorAll("#servicesGrid .card");
     serviceCards.forEach((card, i) => card.innerText = lang.servicesList[i]);
-
-    document.getElementById("projectsTitle").innerText = lang.projectsTitle;
-    const projectNames = document.querySelectorAll(".proj-name");
-    const projectDescs = document.querySelectorAll(".proj-desc");
-    lang.projectItems.forEach((item, i) => {
-        projectNames[i].innerText = item.name;
-        projectDescs[i].innerText = item.desc;
-    });
 
     document.getElementById("clientsTitle").innerText = lang.clientsTitle;
     document.getElementById("contactTitle").innerText = lang.contactTitle;
