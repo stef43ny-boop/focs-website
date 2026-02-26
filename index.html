@@ -78,22 +78,33 @@
         .mobile-menu a { display: block; padding: 16px 24px; border-top: 1px solid rgba(255, 255, 255, .1); color: white; text-decoration: none; }
         .mobile-menu.active { max-height: 800px; opacity: 1; transform: translateY(0); }
 
-        /* HERO */
+        /* HERO - AQUÍ ESTÁ EL CAMBIO DE LA IMAGEN TRANSLÚCIDA */
         .hero {
-            padding: 160px 64px 120px;
-            background: linear-gradient(rgba(11, 42, 74, .85), rgba(11, 42, 74, .85)), url('images/hero.webp') center/cover no-repeat;
-            color: white; opacity: 0; transform: translateY(20px); transition: 1s ease;
+            padding: 180px 64px 140px;
+            /* Se aplica un degradado azul sobre la imagen hero-bg.jpg */
+            background: 
+                linear-gradient(to bottom, rgba(11, 42, 74, 0.85), rgba(11, 42, 74, 0.95)), 
+                url('images/hero-bg.jpg') center/cover no-repeat;
+            color: white; 
+            opacity: 0; 
+            transform: translateY(20px); 
+            transition: 1.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 60vh;
         }
         .hero.visible { opacity: 1; transform: translateY(0); }
-        .hero h1 { font-size: 46px; max-width: 900px; margin: 0; }
-        .hero p { margin-top: 18px; max-width: 760px; font-size: 1.1rem; }
+        .hero h1 { font-size: 48px; max-width: 900px; margin: 0; line-height: 1.2; text-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .hero p { margin-top: 24px; max-width: 760px; font-size: 1.2rem; opacity: 0.9; }
 
         .cta-btn {
-            display: inline-block; margin-top: 30px; padding: 14px 32px;
+            display: inline-block; margin-top: 35px; padding: 16px 36px;
             background: var(--blue-accent); color: white; border-radius: 8px;
             text-decoration: none; font-weight: 600; transition: .25s ease;
+            width: fit-content;
         }
-        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0, 0, 0, .15); }
+        .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 0, 0, .2); background: #2581d6; }
 
         /* SECCIONES GENERAL */
         section { padding: 90px 64px; background: white; opacity: 0; transform: translateY(40px); transition: .9s ease; }
@@ -128,8 +139,8 @@
         @media(max-width: 768px){
             .menu-toggle { display: flex; }
             nav { display: none; }
-            .hero { padding: 130px 20px 90px; }
-            .hero h1 { font-size: 28px; }
+            .hero { padding: 140px 20px 100px; text-align: center; align-items: center; }
+            .hero h1 { font-size: 30px; }
             section { padding: 60px 20px; }
             .clients-grid img { height: 35px; }
         }
@@ -216,7 +227,7 @@
         <img src="images/Cimsa logo.png" alt="CIMSA">
         <img src="images/Holtec logo.png" alt="HOLTEC">
         <img src="images/SPIG_logo.png" alt="SPIG">
-        <img src="images/SPG o.png" alt="SPG">
+        <img src="images/SPG.png" alt="SPG">
         <img src="images/Thyssen logo.png" alt="Thyssen Krupp">
         <img src="images/Gea logo.jpg" alt="GEA">
     </div>
